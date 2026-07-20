@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { site } from "../../data/site";
+import { url } from "../../lib/url";
 
 export async function getStaticPaths() {
   const obras = await getCollection("obras");
@@ -23,10 +24,10 @@ const relacionadas = (await getCollection("obras"))
 <BaseLayout title={d.titulo} description={d.descripcion}>
   <section class="detail">
     <div class="container">
-      <a href="/catalogo" class="back">← Volver al catálogo</a>
+      <a href={url("/catalogo")} class="back">← Volver al catálogo</a>
       <div class="detail-grid">
         <div class="detail-media">
-          <img src={d.imagen} alt={d.titulo} width="500" height="500" />
+          <img src={url(d.imagen)} alt={d.titulo} width="500" height="500" />
         </div>
         <div class="detail-info">
           <p class="eyebrow">{d.categoria}</p>
@@ -47,7 +48,7 @@ const relacionadas = (await getCollection("obras"))
             <a href={`mailto:${site.email}?subject=${encodeURIComponent("Consulta: " + d.titulo)}`} class="btn btn-primary">
               Consultar esta pieza
             </a>
-            <a href="/contacto" class="btn btn-ghost">Contacto</a>
+            <a href={url("/contacto")} class="btn btn-ghost">Contacto</a>
           </div>
         </div>
       </div>
@@ -58,8 +59,8 @@ const relacionadas = (await getCollection("obras"))
             <h2>Otras piezas de {d.categoria}</h2>
             <div class="related-grid">
               {relacionadas.map((o) => (
-                <a href={`/obra/${o.id}`} class="related-card">
-                  <img src={o.data.imagen} alt={o.data.titulo} width="500" height="500" />
+                <a href={url(`/obra/${o.id}`)} class="related-card">
+                  <img src={url(o.data.imagen)} alt={o.data.titulo} width="500" height="500" />
                   <span>{o.data.titulo}</span>
                 </a>
               ))}

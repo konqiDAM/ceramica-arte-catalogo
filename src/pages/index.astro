@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ObraCard from "../components/ObraCard.astro";
 import { site } from "../data/site";
+import { url } from "../lib/url";
 
 const obras = (await getCollection("obras")).sort(
   (a, b) => a.data.orden - b.data.orden,
@@ -25,13 +26,13 @@ const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
           escultura y obra de arte, cada pieza modelada y esmaltada a mano.
         </p>
         <div class="hero-cta">
-          <a href="/catalogo" class="btn btn-primary">Ver catálogo</a>
-          <a href="/sobre" class="btn btn-ghost">Conocer el taller</a>
+          <a href={url("/catalogo")} class="btn btn-primary">Ver catálogo</a>
+          <a href={url("/sobre")} class="btn btn-ghost">Conocer el taller</a>
         </div>
       </div>
       <div class="hero-media">
-        <img src="/images/pieza-1.svg" alt="Pieza de cerámica destacada" width="500" height="500" />
-        <img src="/images/pieza-6.svg" alt="Escultura destacada" width="500" height="500" />
+        <img src={url("/images/pieza-1.svg")} alt="Pieza de cerámica destacada" width="500" height="500" />
+        <img src={url("/images/pieza-6.svg")} alt="Escultura destacada" width="500" height="500" />
       </div>
     </div>
   </section>
@@ -43,7 +44,7 @@ const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
           <p class="eyebrow">Selección</p>
           <h2>Piezas destacadas</h2>
         </div>
-        <a href="/catalogo" class="see-all">Ver todo el catálogo →</a>
+        <a href={url("/catalogo")} class="see-all">Ver todo el catálogo →</a>
       </div>
       <div class="grid">
         {
@@ -74,7 +75,7 @@ const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
       <div class="cat-grid">
         {
           Object.entries(totalPorCategoria).map(([cat, n]) => (
-            <a href={`/catalogo#${cat.toLowerCase()}`} class="cat-card">
+            <a href={url(`/catalogo#${cat.toLowerCase()}`)} class="cat-card">
               <h3>{cat}</h3>
               <span>{n} {n === 1 ? "pieza" : "piezas"}</span>
             </a>
@@ -90,7 +91,7 @@ const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
       <p class="lead mx-auto">
         Trabajamos también por encargo. Escríbenos y hablamos sobre tu idea.
       </p>
-      <a href="/contacto" class="btn btn-primary">Contactar</a>
+      <a href={url("/contacto")} class="btn btn-primary">Contactar</a>
     </div>
   </section>
 </BaseLayout>

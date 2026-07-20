@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../data/site";
+import { url } from "../lib/url";
 ---
 
 <BaseLayout title="El taller" description="Conoce el taller y el proceso artesanal detrás de cada pieza.">
@@ -15,7 +16,7 @@ import { site } from "../data/site";
           se cuida a mano, de principio a fin.
         </p>
       </div>
-      <img src="/images/pieza-3.svg" alt="El taller" width="500" height="500" />
+      <img src={url("/images/pieza-3.svg")} alt="El taller" width="500" height="500" />
     </div>
   </section>
 
@@ -55,7 +56,7 @@ import { site } from "../data/site";
     <div class="container center">
       <h2>Visita o encarga tu pieza</h2>
       <p class="lead mx-auto">{site.location}. Escríbenos para concertar una visita o encargar una pieza.</p>
-      <a href="/contacto" class="btn btn-primary">Contactar</a>
+      <a href={url("/contacto")} class="btn btn-primary">Contactar</a>
     </div>
   </section>
 </BaseLayout>

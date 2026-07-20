@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 interface Props {
   slug: string;
   titulo: string;
@@ -10,9 +11,9 @@ interface Props {
 const { slug, titulo, categoria, descripcion, imagen, disponible = true } = Astro.props;
 ---
 
-<a class="card" href={`/obra/${slug}`}>
+<a class="card" href={url(`/obra/${slug}`)}>
   <div class="card-media">
-    <img src={imagen} alt={titulo} loading="lazy" width="500" height="500" />
+    <img src={url(imagen)} alt={titulo} loading="lazy" width="500" height="500" />
     <span class="badge">{categoria}</span>
     {!disponible && <span class="badge badge-muted">Vendida</span>}
   </div>
