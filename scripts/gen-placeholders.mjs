@@ -1,9 +1,10 @@
-// Generates warm, artisan-style SVG placeholder images for the catalog.
+// Generates warm, artisan-style .jpg placeholder images for the catalog.
 // Each image is a stylized ceramic/art piece so the site looks real before
 // the user drops in their own photography (replace files in public/images).
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import sharp from 'sharp';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = join(__dirname, '..', 'public', 'images');
@@ -38,6 +39,7 @@ const shapes = [
 ];
 
 const count = 9;
+const jobs = [];
 for (let i = 0; i < count; i++) {
   const [main, bg] = palettes[i % palettes.length];
   const shape = shapes[i % shapes.length](main);
@@ -53,8 +55,13 @@ for (let i = 0; i < count; i++) {
   <ellipse cx="250" cy="400" rx="150" ry="26" fill="#000" opacity="0.08" filter="url(#soft${i})"/>
   ${shape}
 </svg>`;
-  writeFileSync(join(outDir, `pieza-${i + 1}.svg`), svg.trim());
+  jobs.push(
+    sharp(Buffer.from(svg.trim()), { density: 150 })
+      .jpeg({ quality: 88 })
+      .toFile(join(outDir, `pieza-${i + 1}.jpg`)),
+  );
 }
+await Promise.all(jobs);
 
 function shade(hex, amt) {
   const n = parseInt(hex.slice(1), 16);

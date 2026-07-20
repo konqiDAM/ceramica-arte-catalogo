@@ -2,7 +2,7 @@
 titulo: "Jarrón Terracota"
 categoria: "Cerámica"
 descripcion: "Jarrón torneado a mano en barro rojo, con acabado mate en tonos tierra. Cada pieza conserva las marcas del torno, testimonio del proceso artesanal."
-imagen: "/images/pieza-1.svg"
+imagen: "/images/pieza-1.jpg"
 materiales: "Barro rojo, esmalte mate"
 dimensiones: "28 × 15 cm"
 anio: 2025

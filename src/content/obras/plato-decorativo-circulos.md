@@ -2,7 +2,7 @@
 titulo: "Plato Decorativo Círculos"
 categoria: "Arte"
 descripcion: "Plato mural decorativo con composición de círculos concéntricos pintados a mano con óxidos naturales."
-imagen: "/images/pieza-4.svg"
+imagen: "/images/pieza-4.jpg"
 materiales: "Cerámica, óxidos"
 dimensiones: "Ø 30 cm"
 anio: 2025

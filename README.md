@@ -19,7 +19,7 @@ para consultas y encargos. Hecho con [Astro](https://astro.build).
 | --- | --- |
 | Nombre, email, redes, ubicación | `src/data/site.ts` |
 | Piezas del catálogo | `src/content/obras/*.md` (una por pieza) |
-| Imágenes | `public/images/` (reemplaza los `.svg` por tus fotos `.jpg`/`.webp`) |
+| Imágenes | `public/images/` (reemplaza `pieza-1.jpg` … `pieza-9.jpg` por tus fotos, manteniendo el mismo nombre) |
 | Colores y tipografía | `src/styles/global.css` (variables CSS en `:root`) |
 
 ### Añadir una pieza nueva
@@ -31,7 +31,7 @@ Crea un archivo `src/content/obras/mi-pieza.md`:
 titulo: "Mi pieza"
 categoria: "Cerámica"        # Cerámica | Arte | Escultura
 descripcion: "Descripción corta para las tarjetas."
-imagen: "/images/mi-foto.jpg"
+imagen: "/images/mi-foto.jpg"   # ruta a la foto en public/images
 materiales: "Gres, esmalte mate"
 dimensiones: "20 × 12 cm"
 anio: 2025

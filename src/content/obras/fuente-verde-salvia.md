@@ -2,7 +2,7 @@
 titulo: "Fuente Verde Salvia"
 categoria: "Cerámica"
 descripcion: "Fuente amplia para servir, con un delicado esmalte verde salvia y borde irregular hecho a mano."
-imagen: "/images/pieza-7.svg"
+imagen: "/images/pieza-7.jpg"
 materiales: "Gres, esmalte salvia"
 dimensiones: "Ø 34 × 6 cm"
 anio: 2025

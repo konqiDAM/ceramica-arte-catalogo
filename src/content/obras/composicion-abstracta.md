@@ -2,7 +2,7 @@
 titulo: "Composición Abstracta"
 categoria: "Arte"
 descripcion: "Obra mural en técnica mixta sobre soporte cerámico, con capas de color y textura."
-imagen: "/images/pieza-8.svg"
+imagen: "/images/pieza-8.jpg"
 materiales: "Técnica mixta sobre cerámica"
 dimensiones: "45 × 45 cm"
 anio: 2024

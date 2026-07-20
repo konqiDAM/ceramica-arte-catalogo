@@ -2,7 +2,7 @@
 titulo: "Taza Artesanal"
 categoria: "Cerámica"
 descripcion: "Taza de porcelana con asa modelada a mano y esmalte brillante. El placer del café de cada mañana."
-imagen: "/images/pieza-5.svg"
+imagen: "/images/pieza-5.jpg"
 materiales: "Porcelana, esmalte brillante"
 dimensiones: "9 × 8 cm · 300 ml"
 anio: 2025

@@ -2,7 +2,7 @@
 titulo: "Cuenco Esmaltado Verde"
 categoria: "Cerámica"
 descripcion: "Cuenco de gres con esmalte celadón verde, perfecto para el día a día o para servir en ocasiones especiales."
-imagen: "/images/pieza-2.svg"
+imagen: "/images/pieza-2.jpg"
 materiales: "Gres, esmalte celadón"
 dimensiones: "Ø 22 × 9 cm"
 anio: 2025
