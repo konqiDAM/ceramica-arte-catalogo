@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title="Contacto" description="Ponte en contacto para comprar piezas o encargar obra personalizada.">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Hablemos</p>
+      <h1>Contacto</h1>
+      <p class="lead">
+        ¿Te interesa una pieza, quieres encargar algo especial o simplemente
+        saludar? Escríbenos.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2>Información</h2>
+        <ul>
+          <li><span>Email</span><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><span>Teléfono</span><a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a></li>
+          <li><span>WhatsApp</span><a href={site.whatsapp} target="_blank" rel="noopener">Enviar mensaje</a></li>
+          <li><span>Instagram</span><a href={site.instagram} target="_blank" rel="noopener">Ver perfil</a></li>
+          <li><span>Ubicación</span>{site.location}</li>
+        </ul>
+      </div>
+
+      <form class="contact-form" action={`mailto:${site.email}`} method="post" enctype="text/plain">
+        <h2>Envíanos un mensaje</h2>
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <p class="form-note">
+          Se abrirá tu aplicación de correo. También puedes escribirnos
+          directamente a <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 3rem;
+  }
+  .contact-info ul { list-style: none; padding: 0; margin: 0; }
+  .contact-info li {
+    display: flex;
+    flex-direction: column;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-info span {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+  }
+  .contact-form {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+  }
+  .field { margin-bottom: 1.2rem; }
+  .field label { display: block; font-weight: 500; margin-bottom: 0.35rem; font-size: 0.92rem; }
+  .field input, .field textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    font: inherit;
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--clay);
+    background: #fff;
+  }
+  .form-note { font-size: 0.85rem; color: var(--muted); margin-top: 1rem; }
+  @media (max-width: 760px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>

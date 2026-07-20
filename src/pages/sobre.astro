@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title="El taller" description="Conoce el taller y el proceso artesanal detrás de cada pieza.">
+  <section class="page-head">
+    <div class="container about-hero">
+      <div>
+        <p class="eyebrow">Nuestra historia</p>
+        <h1>El taller</h1>
+        <p class="lead">
+          {site.name} nace del amor por el barro y por las cosas hechas
+          despacio. Un pequeño estudio donde cada pieza se piensa, se modela y
+          se cuida a mano, de principio a fin.
+        </p>
+      </div>
+      <img src="/images/pieza-3.svg" alt="El taller" width="500" height="500" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <h2>El proceso</h2>
+      <p>
+        Todo empieza con el barro. Lo amasamos, lo centramos en el torno y le
+        damos forma con las manos. Después vienen el secado, la primera cocción,
+        el esmaltado —a menudo con esmaltes que preparamos nosotros mismos— y una
+        segunda cocción a alta temperatura.
+      </p>
+      <p>
+        Este proceso, que puede durar semanas, hace que cada pieza sea única.
+        Las pequeñas irregularidades no son defectos: son la huella de lo hecho a
+        mano.
+      </p>
+
+      <div class="values">
+        <div class="value">
+          <h3>Hecho a mano</h3>
+          <p>Sin moldes industriales. Cada pieza pasa por nuestras manos.</p>
+        </div>
+        <div class="value">
+          <h3>Materiales nobles</h3>
+          <p>Barros y esmaltes de calidad, aptos para uso alimentario cuando corresponde.</p>
+        </div>
+        <div class="value">
+          <h3>Por encargo</h3>
+          <p>¿Buscas algo especial? Creamos piezas personalizadas a medida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container center">
+      <h2>Visita o encarga tu pieza</h2>
+      <p class="lead mx-auto">{site.location}. Escríbenos para concertar una visita o encargar una pieza.</p>
+      <a href="/contacto" class="btn btn-primary">Contactar</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .about-hero img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4 / 3; object-fit: cover; }
+  .narrow { max-width: 760px; }
+  .values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .value {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .value h3 { color: var(--clay-dark); }
+  .value p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  @media (max-width: 760px) {
+    .about-hero { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+interface Props {
+  slug: string;
+  titulo: string;
+  categoria: string;
+  descripcion: string;
+  imagen: string;
+  disponible?: boolean;
+}
+const { slug, titulo, categoria, descripcion, imagen, disponible = true } = Astro.props;
+---
+
+<a class="card" href={`/obra/${slug}`}>
+  <div class="card-media">
+    <img src={imagen} alt={titulo} loading="lazy" width="500" height="500" />
+    <span class="badge">{categoria}</span>
+    {!disponible && <span class="badge badge-muted">Vendida</span>}
+  </div>
+  <div class="card-body">
+    <h3>{titulo}</h3>
+    <p>{descripcion}</p>
+    <span class="link">Ver pieza →</span>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    color: var(--ink);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(60, 40, 25, 0.14);
+  }
+  .card-media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--sand);
+  }
+  .card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .card:hover .card-media img { transform: scale(1.05); }
+  .badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--clay-dark);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+  }
+  .badge-muted {
+    left: auto;
+    right: 12px;
+    background: var(--ink);
+    color: #fff;
+  }
+  .card-body { padding: 1.3rem 1.4rem 1.5rem; }
+  .card-body h3 { margin-bottom: 0.3rem; }
+  .card-body p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.9rem;
+  }
+  .link { color: var(--clay-dark); font-weight: 600; font-size: 0.92rem; }
+</style>

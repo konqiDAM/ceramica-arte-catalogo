@@ -1,0 +1,65 @@
+---
+import { site, nav } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">{site.name}</p>
+      <p class="footer-tag">{site.tagline}</p>
+    </div>
+    <nav aria-label="Pie de página">
+      <ul>
+        {nav.map((item) => (<li><a href={item.href}>{item.label}</a></li>))}
+      </ul>
+    </nav>
+    <div>
+      <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <p>{site.location}</p>
+      <p class="socials">
+        <a href={site.instagram} target="_blank" rel="noopener">Instagram</a>
+        <a href={site.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+      </p>
+    </div>
+  </div>
+  <div class="container copyright">
+    <p>© {year} {site.name}. Piezas únicas hechas a mano.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: #e9e1d6;
+    padding: 3.5rem 0 1.5rem;
+    margin-top: 2rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    gap: 2rem;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+    color: #fff;
+  }
+  .footer-tag { color: #b6ac9e; margin: 0; }
+  .site-footer a { color: #e9e1d6; }
+  .site-footer a:hover { color: #fff; }
+  .site-footer ul { list-style: none; margin: 0; padding: 0; }
+  .site-footer li { margin-bottom: 0.5rem; }
+  .socials { display: flex; gap: 1.2rem; }
+  .copyright {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.85rem;
+    color: #9c9284;
+  }
+  @media (max-width: 720px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+</style>

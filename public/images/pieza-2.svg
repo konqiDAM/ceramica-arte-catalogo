@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 500 500" role="img" aria-label="Pieza artesanal">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dfe3d0"/>
+      <stop offset="1" stop-color="#cdd1be"/>
+    </linearGradient>
+    <filter id="soft1"><feGaussianBlur stdDeviation="2"/></filter>
+  </defs>
+  <rect width="500" height="500" fill="url(#g1)"/>
+  <ellipse cx="250" cy="400" rx="150" ry="26" fill="#000" opacity="0.08" filter="url(#soft1)"/>
+  <path d="M120 230 a130 90 0 0 0 260 0 q-8 -18 -30 -18 h-200 q-22 0 -30 18 z" fill="#7d8b74"/>
+</svg>

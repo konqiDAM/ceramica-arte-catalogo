@@ -1,0 +1,125 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../data/site";
+
+export async function getStaticPaths() {
+  const obras = await getCollection("obras");
+  return obras.map((obra) => ({
+    params: { slug: obra.id },
+    props: { obra },
+  }));
+}
+
+const { obra } = Astro.props;
+const { Content } = await render(obra);
+const d = obra.data;
+
+const relacionadas = (await getCollection("obras"))
+  .filter((o) => o.id !== obra.id && o.data.categoria === d.categoria)
+  .slice(0, 3);
+---
+
+<BaseLayout title={d.titulo} description={d.descripcion}>
+  <section class="detail">
+    <div class="container">
+      <a href="/catalogo" class="back">← Volver al catálogo</a>
+      <div class="detail-grid">
+        <div class="detail-media">
+          <img src={d.imagen} alt={d.titulo} width="500" height="500" />
+        </div>
+        <div class="detail-info">
+          <p class="eyebrow">{d.categoria}</p>
+          <h1>{d.titulo}</h1>
+          <p class="lead">{d.descripcion}</p>
+
+          <div class="prose"><Content /></div>
+
+          <dl class="specs">
+            {d.materiales && (<><dt>Materiales</dt><dd>{d.materiales}</dd></>)}
+            {d.dimensiones && (<><dt>Dimensiones</dt><dd>{d.dimensiones}</dd></>)}
+            {d.anio && (<><dt>Año</dt><dd>{d.anio}</dd></>)}
+            <dt>Disponibilidad</dt>
+            <dd>{d.disponible ? "Disponible" : "Vendida"}</dd>
+          </dl>
+
+          <div class="detail-cta">
+            <a href={`mailto:${site.email}?subject=${encodeURIComponent("Consulta: " + d.titulo)}`} class="btn btn-primary">
+              Consultar esta pieza
+            </a>
+            <a href="/contacto" class="btn btn-ghost">Contacto</a>
+          </div>
+        </div>
+      </div>
+
+      {
+        relacionadas.length > 0 && (
+          <div class="related">
+            <h2>Otras piezas de {d.categoria}</h2>
+            <div class="related-grid">
+              {relacionadas.map((o) => (
+                <a href={`/obra/${o.id}`} class="related-card">
+                  <img src={o.data.imagen} alt={o.data.titulo} width="500" height="500" />
+                  <span>{o.data.titulo}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .detail { padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(3rem, 6vw, 5rem); }
+  .back { display: inline-block; margin-bottom: 1.5rem; font-weight: 500; }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .detail-media img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    position: sticky;
+    top: 96px;
+  }
+  .prose { color: var(--ink); margin-bottom: 1.5rem; }
+  .specs {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.6rem 1.5rem;
+    padding: 1.3rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.8rem;
+  }
+  .specs dt { color: var(--muted); font-size: 0.9rem; }
+  .specs dd { margin: 0; font-weight: 500; }
+  .detail-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .related { margin-top: 4rem; }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  .related-card { color: var(--ink); }
+  .related-card img {
+    border-radius: var(--radius);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-bottom: 0.6rem;
+    box-shadow: var(--shadow);
+  }
+  .related-card span { font-weight: 500; }
+  @media (max-width: 780px) {
+    .detail-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .detail-media img { position: static; }
+  }
+</style>
