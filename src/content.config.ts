@@ -5,7 +5,7 @@ const obras = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/obras" }),
   schema: z.object({
     titulo: z.string(),
-    categoria: z.enum(["Cerámica", "Arte", "Escultura"]),
+    categoria: z.enum(["Cerámica", "Arte", "Escultura", "Cursos", "Eventos", "Trabajos en torno", "Trabajos modelados", "Objetos cotidianos", "Encargos"]),
     descripcion: z.string(),
     imagen: z.string(),
     materiales: z.string().optional(),
