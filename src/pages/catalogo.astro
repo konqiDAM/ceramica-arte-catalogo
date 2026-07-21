@@ -9,11 +9,11 @@ const obras = (await getCollection("obras")).sort(
 const categorias = ["Todas", ...new Set(obras.map((o) => o.data.categoria))];
 ---
 
-<BaseLayout title="Catálogo" description="Catálogo completo de piezas de cerámica y arte hechas a mano.">
+<BaseLayout title="Menú" description="Menú completo de piezas de cerámica y arte hechas a mano.">
   <section class="page-head">
     <div class="container">
-      <p class="eyebrow">El taller</p>
-      <h1>Catálogo</h1>
+      <p class="eyebrow">Jenifer Lazcano Sindin</p>
+      <h1>Menú</h1>
       <p class="lead">
         Todas las piezas disponibles. Cada una es única y hecha a mano; pueden
         existir pequeñas variaciones que las hacen irrepetibles.

@@ -18,6 +18,7 @@ import { site } from "../data/site";
   <section class="section">
     <div class="container contact-grid">
       <div class="contact-info">
+        <img src="/images/pieza-1.jpg" alt="Pieza de cerámica" class="contact-image" />
         <h2>Información</h2>
         <ul>
           <li><span>Email</span><a href={`mailto:${site.email}`}>{site.email}</a></li>
@@ -58,6 +59,13 @@ import { site } from "../data/site";
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
     gap: 3rem;
+  }
+  .contact-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
   }
   .contact-info ul { list-style: none; padding: 0; margin: 0; }
   .contact-info li {
