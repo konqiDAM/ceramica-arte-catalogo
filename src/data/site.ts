@@ -7,6 +7,8 @@ export const site = {
   email: "hola@barroyarte.com",
   phone: "+34 600 000 000",
   location: "Estudio en Valencia, España",
+  // Dirección o lugar que se muestra en el mapa de Google Maps de la página de contacto.
+  mapQuery: "Valencia, España",
   instagram: "https://instagram.com/",
   whatsapp: "https://wa.me/34600000000",
   url: "https://barroyarte.example.com",
