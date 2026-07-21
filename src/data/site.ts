@@ -15,6 +15,7 @@ export const site = {
 export const nav = [
   { href: "/", label: "Inicio" },
   { href: "/catalogo", label: "Menú" },
-  { href: "/sobre", label: "El taller" },
+  { href: "/sobre", label: "Artista JLS" },
+  { href: "/galeria", label: "Galería de Fotos" },
   { href: "/contacto", label: "Contacto" },
 ];
