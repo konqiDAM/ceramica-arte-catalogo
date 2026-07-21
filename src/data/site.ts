@@ -4,11 +4,11 @@ export const site = {
   tagline: "Cerámica artesanal y obras de arte hechas a mano",
   description:
     "Piezas únicas de cerámica y arte hechas a mano en pequeño taller. Cada obra es irrepetible.",
-  email: "hola@barroyarte.com",
-  phone: "+34 600 000 000",
+  email: "artstudiojls@gmail.com",
+  phone: "0041 76 348 84 54",
   location: "Estudio en Valencia, España",
   instagram: "https://instagram.com/",
-  whatsapp: "https://wa.me/34600000000",
+  telegram: "https://t.me/",
   url: "https://barroyarte.example.com",
 };
 
