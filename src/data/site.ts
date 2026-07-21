@@ -1,6 +1,6 @@
 // Central place for the studio's details. Edit these to personalize the site.
 export const site = {
-  name: "Taller Barro & Arte",
+  name: "Art studio JLS",
   tagline: "Cerámica artesanal y obras de arte hechas a mano",
   description:
     "Piezas únicas de cerámica y arte hechas a mano en pequeño taller. Cada obra es irrepetible.",
