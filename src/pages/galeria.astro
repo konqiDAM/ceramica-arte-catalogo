@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { url } from "../lib/url";
+
+const fotos = Array.from({ length: 9 }, (_, i) => `/images/pieza-${i + 1}.jpg`);
+---
+
+<BaseLayout title="Galería de Fotos" description="Galería de fotos de piezas de cerámica y arte hechas a mano.">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Jenifer Lazcano Sindin</p>
+      <h1>Galería de Fotos</h1>
+      <p class="lead">
+        Una selección de imágenes de las piezas y del proceso artesanal del estudio.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="gallery">
+        {
+          fotos.map((src, i) => (
+            <figure class="gallery-item">
+              <img src={url(src)} alt={`Fotografía ${i + 1} del estudio`} loading="lazy" width="600" height="600" />
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .page-head .lead { margin-top: 0.5rem; }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .gallery-item {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .gallery-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+</style>
