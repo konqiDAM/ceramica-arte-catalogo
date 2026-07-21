@@ -6,9 +6,9 @@ export const site = {
     "Piezas únicas de cerámica y arte hechas a mano en pequeño taller. Cada obra es irrepetible.",
   email: "hola@barroyarte.com",
   phone: "+34 600 000 000",
-  location: "Estudio en Valencia, España",
+  location: "Limmattalstrasse 280, 8049 Zürich",
   // Dirección o lugar que se muestra en el mapa de Google Maps de la página de contacto.
-  mapQuery: "Valencia, España",
+  mapQuery: "Limmattalstrasse 280, 8049 Zürich",
   instagram: "https://instagram.com/",
   whatsapp: "https://wa.me/34600000000",
   url: "https://barroyarte.example.com",
