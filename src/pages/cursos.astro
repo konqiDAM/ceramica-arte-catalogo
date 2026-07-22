@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+import { url } from "../lib/url";
+---
+
+<BaseLayout title="Cursos" description="Aprende cerámica con nosotros. Cursos para principiantes y avanzados.">
+  <section class="page-head">
+    <div class="container cursos-hero">
+      <div>
+        <p class="eyebrow">Aprende con nosotros</p>
+        <h1>Cursos de Cerámica</h1>
+        <p class="lead">
+          Descubre el arte del barro. Desde técnicas básicas hasta métodos avanzados,
+          te guiamos en cada paso para crear tus propias piezas únicas.
+        </p>
+      </div>
+      <img src={url("/images/pieza-2.jpg")} alt="Curso de cerámica" width="500" height="500" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <h2>Nuestros Cursos</h2>
+      <p>
+        Ofrecemos cursos adaptados a todos los niveles. Si nunca has tocado el barro,
+        comenzaremos desde cero con las técnicas fundamentales. Si ya tienes experiencia,
+        podemos profundizar en técnicas específicas como el torno, el esmaltado o la
+        escultura.
+      </p>
+      <p>
+        Los cursos se imparten en nuestro estudio en {site.location}. Trabajamos en
+        grupos pequeños para asegurar una atención personalizada. Cada sesión incluye
+        materiales, herramientas y las cocciones necesarias.
+      </p>
+
+      <div class="values">
+        <div class="value">
+          <h3>Principiantes</h3>
+          <p>Aprende las bases: amasado, centrado, formas básicas y decoración sencilla.</p>
+        </div>
+        <div class="value">
+          <h3>Torno</h3>
+          <p>Domina el torno eléctrico: cylinders, cuencos, jarrones y técnicas de acabado.</p>
+        </div>
+        <div class="value">
+          <h3>Modelado a mano</h3>
+          <p>Crea esculturas y formas orgánicas utilizando técnicas de modelado manual.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container narrow">
+      <h2>Información de Contacto</h2>
+      <p class="lead">
+        ¿Interesado en un curso? Contáctanos para consultar disponibilidad,
+        horarios y precios.
+      </p>
+      <ul class="contact-list">
+        <li><span>Email</span><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><span>Teléfono</span><a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a></li>
+        <li><span>Telegram</span><a href={site.telegram} target="_blank" rel="noopener">Enviar mensaje</a></li>
+      </ul>
+      <div class="cta-wrapper">
+        <a href={url("/contacto")} class="btn btn-primary">Contactar para reservar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .cursos-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .cursos-hero img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4 / 3; object-fit: cover; }
+  .narrow { max-width: 760px; }
+  .values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .value {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .value h3 { color: var(--clay-dark); }
+  .value p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+  .contact-list li {
+    display: flex;
+    flex-direction: column;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-list span {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+  }
+  .cta-wrapper { margin-top: 2rem; }
+  @media (max-width: 760px) {
+    .cursos-hero { grid-template-columns: 1fr; }
+  }
+</style>
