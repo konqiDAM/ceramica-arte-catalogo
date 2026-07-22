@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+import { url } from "../lib/url";
+---
+
+<BaseLayout title="Encargos" description="Encarga piezas personalizadas de cerámica. Creamos obras únicas según tus ideas.">
+  <section class="page-head">
+    <div class="container encargos-hero">
+      <div>
+        <p class="eyebrow">Piezas únicas para ti</p>
+        <h1>Encargos Personalizados</h1>
+        <p class="lead">
+          ¿Tienes una idea especial en mente? Trabajamos contigo para crear
+          piezas de cerámica únicas que se adapten a tu visión, espacio y estilo.
+        </p>
+      </div>
+      <img src={url("/images/pieza-3.jpg")} alt="Pieza personalizada" width="500" height="500" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <h2>Cómo Funciona</h2>
+      <p>
+        El proceso de encargo comienza con una consulta. Nos cuentas tu idea:
+        el tipo de pieza que buscas, el estilo, el tamaño, el color. Si tienes
+        referencias visuales, nos ayudan mucho a entender tu visión.
+      </p>
+      <p>
+        Después evaluamos la viabilidad, te damos un presupuesto aproximado
+        y un tiempo de entrega. Una vez confirmado, comenzamos a trabajar en
+        tu pieza. Te mantendremos informado del progreso con fotos durante
+        el proceso de creación.
+      </p>
+      <p>
+        Cada encargo es único. Las piezas hechas a medida tienen su propio
+        carácter y pueden presentar pequeñas variaciones que las hacen
+        irrepetibles — es parte de la magia de lo artesanal.
+      </p>
+
+      <div class="cta-wrapper">
+        <a href={url("/contacto")} class="btn btn-primary">Consultar un encargo</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .encargos-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .encargos-hero img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4 / 3; object-fit: cover; }
+  .narrow { max-width: 760px; }
+  .cta-wrapper { margin-top: 2.5rem; }
+  @media (max-width: 760px) {
+    .encargos-hero { grid-template-columns: 1fr; }
+  }
+</style>

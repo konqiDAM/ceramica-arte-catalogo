@@ -18,6 +18,7 @@ export const nav = [
   { href: "/", label: "Inicio" },
   { href: "/catalogo", label: "Menú" },
   { href: "/cursos", label: "Cursos" },
+  { href: "/encargos", label: "Encargos" },
   { href: "/sobre", label: "Artista JLS" },
   { href: "/galeria", label: "Galería de Fotos" },
   { href: "/contacto", label: "Contacto" },
