@@ -1,9 +1,9 @@
-# Project context — Taller Barro & Arte (catálogo web)
+# Project context — Art studio JLS (catálogo web)
 
 Handoff document for another Devin instance (or developer) continuing this project locally.
 
 ## What this is
-A **static catalog / portfolio website** for a ceramics & art studio. **No payments, no cart, no backend** — it only showcases pieces and has a contact form (`mailto`). Built with **Astro** (static output). Content is managed with Astro **content collections** in Markdown, so no database.
+A **static catalog / portfolio website** for a ceramics & art studio. **No payments, no cart, no backend** — it only showcases pieces, offers courses, and has a contact form (`mailto`). Built with **Astro** (static output). Content is managed with Astro **content collections** in Markdown, so no database.
 
 Language of the site UI and content: **Spanish**.
 
@@ -43,7 +43,7 @@ scripts/gen-placeholders.mjs     # regenerates public/images/pieza-N.jpg placeho
 public/images/pieza-1..9.jpg     # piece images (placeholders; replace with real photos)
 public/favicon.svg
 src/
-  data/site.ts                   # studio name, email, phone, socials, nav — EDIT ME
+  data/site.ts                   # studio name, email, phone, socials, nav, location, mapQuery — EDIT ME
   content.config.ts              # content collection "obras" schema (zod)
   content/obras/*.md             # ONE markdown file per piece (the catalog data)
   lib/url.ts                     # base-path-aware URL helper (use everywhere)
@@ -54,8 +54,10 @@ src/
   pages/
     index.astro                  # home: hero, destacadas, categorías, CTA
     catalogo.astro               # full grid + client-side category filter
-    sobre.astro                  # "El taller" (about)
-    contacto.astro               # contact info + mailto form
+    cursos.astro                 # courses page with contact info
+    sobre.astro                  # "Artista JLS" (about)
+    galeria.astro                # photo gallery page
+    contacto.astro               # contact info + mailto form + Google Maps
     obra/[...slug].astro         # per-piece detail page (getStaticPaths)
 ```
 
@@ -64,7 +66,7 @@ Each piece is a Markdown file in `src/content/obras/`. Frontmatter schema (see `
 ```md
 ---
 titulo: "Jarrón Terracota"
-categoria: "Cerámica"        # one of: Cerámica | Arte | Escultura
+categoria: "Cerámica"        # one of: Cerámica | Arte | Escultura | Cursos | Eventos | Trabajos en torno | Trabajos modelados | Objetos cotidianos | Encargos
 descripcion: "Texto corto para las tarjetas."
 imagen: "/images/pieza-1.jpg"   # path under public/
 materiales: "Barro rojo, esmalte mate"   # optional
@@ -94,7 +96,15 @@ Categories are an enum — adding a new category means updating the `z.enum([...
 - Node 20 is the system default in PATH on the cloud VM; must `nvm use 22` before any npm/astro command there. A local machine just needs Node 22+.
 - `@types/node` is a devDependency so `process.env` typechecks in `astro.config.mjs`.
 
+## Current studio details (as of July 2026)
+- **Studio name**: Art studio JLS
+- **Email**: artstudiojls@gmail.com
+- **Phone**: 0041 76 348 84 54
+- **Location**: Limmattalstrasse 280, 8049 Zürich
+- **Social**: Telegram (https://t.me/), Instagram (placeholder)
+- **Contact method**: Telegram instead of WhatsApp
+
 ## Ideas / possible next steps (not done)
 - Replace placeholder JPGs with real studio photography.
-- Fill in real studio details in `src/data/site.ts` (name, email, phone, Instagram, WhatsApp, location).
+- Fill in real Instagram URL in `src/data/site.ts`.
 - Optional: add `@astrojs/sitemap`, an OG/social share image, a real contact-form backend (e.g. Formspree/Netlify Forms), or per-piece image galleries.
