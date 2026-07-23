@@ -1,8 +1,8 @@
 ﻿---
 titulo: "TÃ­tulo del objeto"
-categoria: "Artista"
+categoria: "Arte"
 descripcion: "DescripciÃ³n corta del objeto."
-imagen: "/images/artista-jls/imagen-1.jpg"
+imagen: "/images/artista-jls/artista-jls-1.jpg"
 materiales: ""
 dimensiones: ""
 anio: 2025
