@@ -1,15 +1,16 @@
-# Taller Barro & Arte — Catálogo web
+# Art studio JLS — Catálogo web
 
-Catálogo / portafolio web para un taller de **cerámica artesanal y obras de arte**.
-Sin pasarela de pago: muestra las piezas, sus detalles y un formulario de contacto
-para consultas y encargos. Hecho con [Astro](https://astro.build).
+Catálogo / portafolio web para un estudio de **cerámica artesanal y obras de arte**.
+Sin pasarela de pago: muestra las piezas, sus detalles, cursos y encargos con formulario de contacto.
+Hecho con [Astro](https://astro.build).
 
 ## Características
 
 - Página de inicio con piezas destacadas y categorías.
-- Catálogo filtrable por categoría (Cerámica, Arte, Escultura).
+- Catálogo filtrable por categoría (Cerámica, Arte, Escultura, Cursos, Eventos, Trabajos en torno, Trabajos modelados, Objetos cotidianos, Encargos).
 - Página de detalle por pieza (materiales, dimensiones, año, disponibilidad).
-- Página "El taller" (sobre) y página de contacto con formulario `mailto`.
+- Páginas "Cursos" y "Encargos" con información de servicios.
+- Página "Artista JLS" (sobre) y página de contacto con formulario `mailto`.
 - Diseño responsive, elegante y de carga rápida (sitio 100% estático).
 - Contenido gestionado con **content collections** en Markdown (sin base de datos).
 
@@ -29,7 +30,7 @@ Crea un archivo `src/content/obras/mi-pieza.md`:
 ```md
 ---
 titulo: "Mi pieza"
-categoria: "Cerámica"        # Cerámica | Arte | Escultura
+categoria: "Cerámica"        # Cerámica | Arte | Escultura | Cursos | Eventos | Trabajos en torno | Trabajos modelados | Objetos cotidianos | Encargos
 descripcion: "Descripción corta para las tarjetas."
 imagen: "/images/mi-foto.jpg"   # ruta a la foto en public/images
 materiales: "Gres, esmalte mate"
