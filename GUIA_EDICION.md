@@ -54,9 +54,14 @@ ceramica-arte-catalogo/
 │       └── global.css          # COLORES Y ESTILOS GENERALES
 ├── public/                      # IMÁGENES Y ARCHIVOS PÚBLICOS
 │   └── images/                 # AQUÍ VAN LAS FOTOS DE LAS PIEZAS
-│       ├── pieza-1.jpg
+│       ├── pieza-1.jpg         # Imágenes generales (piezas del catálogo)
 │       ├── pieza-2.jpg
 │       └── ... (pieza-3.jpg hasta pieza-9.jpg)
+│       ├── menu/               # Carpeta para imágenes del Menú (20 imágenes)
+│       ├── cursos/             # Carpeta para imágenes de Cursos (3 imágenes)
+│       ├── encargos/           # Carpeta para imágenes de Encargos (3 imágenes)
+│       ├── artista-jls/        # Carpeta para imágenes de Artista JLS (1 imagen)
+│       └── galeria/            # Carpeta para Galería de Fotos (100 imágenes)
 └── README.md                   # Información técnica (no necesitas tocarlo)
 ```
 
@@ -124,6 +129,17 @@ export const nav = [
 
 ## Cambiar imágenes
 
+### Organización de imágenes por página
+
+Las imágenes están organizadas en carpetas por página:
+
+- **`public/images/menu/`** - Para imágenes del Menú (20 imágenes)
+- **`public/images/cursos/`** - Para imágenes de Cursos (3 imágenes)
+- **`public/images/encargos/`** - Para imágenes de Encargos (3 imágenes)
+- **`public/images/artista-jls/`** - Para imágenes de Artista JLS (1 imagen)
+- **`public/images/galeria/`** - Para Galería de Fotos (100 imágenes)
+- **`public/images/pieza-1.jpg` a `pieza-9.jpg`** - Imágenes generales del catálogo
+
 ### OPCIÓN A: Cambiar una imagen existente (más fácil)
 
 **Ejemplo: Cambiar la imagen de la pieza 1**
@@ -139,7 +155,34 @@ export const nav = [
 - La foto debe ser formato JPG
 - El nombre debe ser EXACTAMENTE igual (pieza-1.jpg, no Pieza-1.jpg ni pieza 1.jpg)
 
-### OPCIÓN B: Añadir una nueva imagen con nombre diferente
+### OPCIÓN B: Añadir imágenes a carpetas específicas
+
+**Para añadir imágenes al Menú:**
+1. Ve a: `C:\Users\jeni\CascadeProjects\ceramica-arte-catalogo\public\images\menu`
+2. Copia tus fotos en esta carpeta
+3. Nómbralas como quieras (ejemplo: `menu-1.jpg`, `menu-2.jpg`, etc.)
+
+**Para añadir imágenes a Cursos:**
+1. Ve a: `C:\Users\jeni\CascadeProjects\ceramica-arte-catalogo\public\images\cursos`
+2. Copia tus 3 fotos en esta carpeta
+3. Nómbralas como quieras
+
+**Para añadir imágenes a Encargos:**
+1. Ve a: `C:\Users\jeni\CascadeProjects\ceramica-arte-catalogo\public\images\encargos`
+2. Copia tus 3 fotos en esta carpeta
+3. Nómbralas como quieras
+
+**Para añadir imágenes a Artista JLS:**
+1. Ve a: `C:\Users\jeni\CascadeProjects\ceramica-arte-catalogo\public\images\artista-jls`
+2. Copia tu foto en esta carpeta
+3. Nómbrala como quieras
+
+**Para añadir imágenes a Galería:**
+1. Ve a: `C:\Users\jeni\CascadeProjects\ceramica-arte-catalogo\public\images\galeria`
+2. Copia tus fotos en esta carpeta
+3. Nómbralas como quieras
+
+### OPCIÓN C: Añadir una nueva imagen con nombre diferente
 
 1. Ve a: `C:\Users\jeni\CascadeProjects\ceramica-arte-catalogo\public\images`
 2. Copia tu nueva foto en esta carpeta
