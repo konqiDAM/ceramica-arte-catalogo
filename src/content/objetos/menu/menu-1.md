@@ -1,6 +1,6 @@
 ﻿---
 titulo: "TÃ­tulo del objeto"
-categoria: "General"
+categoria: "Objetos cotidianos"
 descripcion: "DescripciÃ³n corta del objeto."
 imagen: "/images/menu/menu-1.jpg"
 materiales: ""
