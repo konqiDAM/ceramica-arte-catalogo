@@ -1,8 +1,8 @@
 ﻿---
 titulo: "TÃ­tulo del objeto"
-categoria: "GalerÃ­a"
+categoria: "Arte"
 descripcion: "DescripciÃ³n corta del objeto."
-imagen: "/images/galeria/imagen-1.jpg"
+imagen: "/images/galeria/galeria-7.jpg"
 materiales: ""
 dimensiones: ""
 anio: 2025
