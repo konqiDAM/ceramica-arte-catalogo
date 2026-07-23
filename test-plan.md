@@ -9,28 +9,26 @@ Load http://localhost:4322/
 - Console: no errors.
 
 ## T2 — Navigation + active highlight + mobile hamburger
-- Click header links Inicio, Catálogo, El taller, Contacto — each lands on correct page (/,/catalogo,/sobre,/contacto).
+- Click header links Inicio, Menú, Cursos, Encargos, Artista JLS, Galería de Fotos, Contacto — each lands on correct page (/,/catalogo,/cursos,/encargos,/sobre,/galeria,/contacto).
 - PASS if active link is underlined/highlighted (clay color) matching current page.
 - At 390px width: nav links hidden, hamburger visible; click hamburger → menu expands (links visible); click again → collapses.
 - FAIL if links dead, no active highlight, hamburger absent or non-functional.
 
 ## T3 — Catálogo filters (/catalogo)
-Load /catalogo. 
-- PASS if grid shows 9 cards, filter buttons: Todas (active), Cerámica, Arte, Escultura.
-- Click "Cerámica" → exactly 5 cards visible, others hidden, button becomes active.
-- Click "Arte" → exactly 2 cards visible.
-- Click "Escultura" → exactly 2 cards visible.
-- Click "Todas" → 9 cards visible again. Empty-state message stays hidden throughout.
+Load /catalogo.
+- PASS if grid shows cards, filter buttons: Todas (active), Cerámica, Arte, Escultura, Cursos, Eventos, Trabajos en torno, Trabajos modelados, Objetos cotidianos, Encargos.
+- Click each category filter → only cards in that category visible, button becomes active.
+- Click "Todas" → all cards visible again. Empty-state message stays hidden throughout.
 - FAIL if counts wrong or filtering doesn't change visible set.
 
 ## T4 — Piece detail (/obra/jarron-terracota)
-- PASS if: image renders, title "Jarrón Terracota", description, specs show Materiales / Dimensiones (28 × 15 cm) / Año (2025) / Disponibilidad (Disponible), "Consultar esta pieza" is a mailto link (mailto:hola@barroyarte.com?subject=...), "Otras piezas de Cerámica" related section with clickable cards.
+- PASS if: image renders, title "Jarrón Terracota", description, specs show Materiales / Dimensiones (28 × 15 cm) / Año (2025) / Disponibilidad (Disponible), "Consultar esta pieza" is a mailto link (mailto:artstudiojls@gmail.com?subject=...), "Otras piezas de Cerámica" related section with clickable cards.
 - Click a related card → navigates to another Cerámica piece detail.
 - FAIL if specs missing, mailto malformed, related links dead.
 
 ## T5 — El taller (/sobre) & Contacto (/contacto)
 - /sobre renders content without error.
-- /contacto renders contact info list + form with Nombre, Email, Mensaje fields + Enviar button.
+- /contacto renders contact info list (email, teléfono, Telegram, Instagram, ubicación) + form with Nombre, Email, Mensaje fields + Enviar button.
 - FAIL if pages error or form fields absent.
 
 ## T6 — Console check

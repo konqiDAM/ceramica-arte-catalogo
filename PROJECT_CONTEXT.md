@@ -55,6 +55,7 @@ src/
     index.astro                  # home: hero, destacadas, categorías, CTA
     catalogo.astro               # full grid + client-side category filter
     cursos.astro                 # courses page with contact info
+    encargos.astro               # custom orders page
     sobre.astro                  # "Artista JLS" (about)
     galeria.astro                # photo gallery page
     contacto.astro               # contact info + mailto form + Google Maps

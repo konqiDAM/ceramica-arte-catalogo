@@ -14,7 +14,7 @@ Hero renders with tagline "Cerámica artesanal y obras de arte hechas a mano" an
 ![Home featured grid](https://app.devin.ai/attachments/ecd07676-707f-4987-b221-c3d343af2806/ss_bded2673.png)
 
 ## T2 — Navigation + active highlight — PASS
-Header links (Inicio, Catálogo, El taller, Contacto) all navigate to the correct pages. Active link is highlighted (clay underline) matching the current page.
+Header links (Inicio, Menú, Cursos, Encargos, Artista JLS, Galería de Fotos, Contacto) all navigate to the correct pages. Active link is highlighted (clay underline) matching the current page.
 
 ![El taller active nav](https://app.devin.ai/attachments/9cf8dd3e-b049-48ac-9fe2-8913f60fb98e/ss_d267d613.png)
 
@@ -32,14 +32,14 @@ Active button state updates on each click. Empty state stayed hidden throughout.
 | ![Arte filter](https://app.devin.ai/attachments/205b060f-54f8-46e3-93db-2da4f3b8bbbc/ss_16746bb5.png) | ![Escultura filter](https://app.devin.ai/attachments/e7698735-e70c-4010-9fa8-ca261de429ef/ss_d58511cc.png) |
 
 ## T4 — Piece detail (/obra/jarron-terracota) — PASS
-Image, title, description render. Specs correct: Materiales (Barro rojo, esmalte mate), Dimensiones (28 × 15 cm), Año (2025), Disponibilidad (Disponible). "Consultar esta pieza" is a mailto link with `subject=Consulta%3A...`. "Otras piezas de Cerámica" related section renders 3 pieces; clicking "Fuente Verde Salvia" navigated to its detail page correctly.
+Image, title, description render. Specs correct: Materiales (Barro rojo, esmalte mate), Dimensiones (28 × 15 cm), Año (2025), Disponibilidad (Disponible). "Consultar esta pieza" is a mailto link with `subject=Consulta%3A...` to artstudiojls@gmail.com. "Otras piezas de Cerámica" related section renders 3 pieces; clicking "Fuente Verde Salvia" navigated to its detail page correctly.
 
 | Detail page | Related-link navigation works |
 |---|---|
 | ![Detail](https://app.devin.ai/attachments/660c056b-353d-437d-9198-24d6be4fdb75/ss_7cb38196.png) | ![Related nav](https://app.devin.ai/attachments/e068af7a-dc4f-49c2-9475-1366f7d2b28d/ss_fe99ba1b.png) |
 
 ## T5 — El taller (/sobre) & Contacto (/contacto) — PASS
-/sobre renders (hero, "El proceso", feature blurbs). /contacto renders Información list (email, teléfono, WhatsApp, Instagram, ubicación) and a form with Nombre, Email, Mensaje fields + Enviar button.
+/sobre renders (hero, "El proceso", feature blurbs). /contacto renders Información list (email, teléfono, Telegram, Instagram, ubicación) and a form with Nombre, Email, Mensaje fields + Enviar button.
 
 ![Contacto form](https://app.devin.ai/attachments/83a9f1bb-e37b-49b0-919d-d39a76d754ce/ss_0f9b5536.png)
 
