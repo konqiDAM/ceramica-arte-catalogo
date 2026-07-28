@@ -1,9 +1,9 @@
 // Central place for the studio's details. Edit these to personalize the site.
 export const site = {
   name: "Art studio JLS",
-  tagline: "Cerámica artesanal y obras de arte hechas a mano",
-  description:
-    "Piezas únicas de cerámica y arte hechas a mano en pequeño taller. Cada obra es irrepetible.",
+  tagline: "Bienvenidos al Taller de ceramica artesanal",
+  description:"diseño y creacion de arte. Encontraras piezas unicas y piezas de uso cotidiano.
+Descubrelo.",
   email: "artstudiojls@gmail.com",
   phone: "0041 76 348 84 54",
   location: "Limmattalstrasse 280, 8049 Zürich",
@@ -16,7 +16,7 @@ export const site = {
 
 export const nav = [
   { href: "/", label: "Inicio" },
-  { href: "/catalogo", label: "Menú" },
+  { href: "/catalogo", label: "Obras" },
   { href: "/cursos", label: "Cursos" },
   { href: "/encargos", label: "Encargos" },
   { href: "/sobre", label: "Artista JLS" },
