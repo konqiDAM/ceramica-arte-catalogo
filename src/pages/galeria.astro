@@ -2,7 +2,17 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { url } from "../lib/url";
 
-const fotos = Array.from({ length: 9 }, (_, i) => `/images/pieza-${i + 1}.jpg`);
+const fotos = [
+  "/images/menu/menu-1.jpg",
+  "/images/menu/pieza-2.jpg",
+  "/images/menu/pieza-4.jpg",
+  "/images/menu/pieza-5.jpg",
+  "/images/menu/pieza-7.jpg",
+  "/images/menu/pieza-8.jpg",
+  "/images/menu/pieza-9.jpg",
+  "/images/inicio/pieza-1.jpg",
+  "/images/inicio/pieza-6.jpg",
+];
 ---
 
 <BaseLayout title="Galería de Fotos" description="Galería de fotos de piezas de cerámica y arte hechas a mano.">
