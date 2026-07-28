@@ -6,17 +6,16 @@ import ObraCard from "../components/ObraCard.astro";
 const obras = (await getCollection("obras")).sort(
   (a, b) => a.data.orden - b.data.orden,
 );
-const categorias = ["Todas", ...new Set(obras.map((o) => o.data.categoria))];
+const categorias = ["Todos", ...new Set(obras.map((o) => o.data.categoria))];
 ---
 
-<BaseLayout title="Menú" description="Menú completo de piezas de cerámica y arte hechas a mano.">
+<BaseLayout title="Trabajos" description="La ceramica es la poesia de la tierra. Federico Garcia Lorca">
   <section class="page-head">
     <div class="container">
       <p class="eyebrow">Jenifer Lazcano Sindin</p>
       <h1>Menú</h1>
       <p class="lead">
-        Todas las piezas disponibles. Cada una es única y hecha a mano; pueden
-        existir pequeñas variaciones que las hacen irrepetibles.
+        Para saber que Piezas estan disponibles contacta con migo y visitame en el taller. Cada pieza existe una única vez.
       </p>
     </div>
   </section>
@@ -27,7 +26,7 @@ const categorias = ["Todas", ...new Set(obras.map((o) => o.data.categoria))];
         {
           categorias.map((cat) => (
             <button
-              class:list={["filter", { active: cat === "Todas" }]}
+              class:list={["filter", { active: cat === "Todos" }]}
               data-cat={cat}
             >
               {cat}
@@ -90,7 +89,7 @@ const categorias = ["Todas", ...new Set(obras.map((o) => o.data.categoria))];
   function apply(cat: string) {
     let visible = 0;
     items.forEach((item) => {
-      const show = cat === "Todas" || item.dataset.cat === cat;
+      const show = cat === "Todos" || item.dataset.cat === cat;
       item.hidden = !show;
       if (show) visible++;
     });
@@ -101,7 +100,7 @@ const categorias = ["Todas", ...new Set(obras.map((o) => o.data.categoria))];
     btn.addEventListener("click", () => {
       filters.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      apply(btn.dataset.cat || "Todas");
+      apply(btn.dataset.cat || "Todos");
     });
   });
 </script>
