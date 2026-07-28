@@ -1,6 +1,6 @@
 ---
 titulo: "Jarrón Terracota"
-categoria: "Objetos cotidianos "
+categoria: "Objetos cotidianos"
 descripcion: "Jarrón torneado a mano en barro rojo, con acabado mate en tonos tierra. Cada pieza conserva las marcas del torno, testimonio del proceso artesanal."
 imagen: "/images/inicio/pieza-1.jpg"
 materiales: "Barro rojo, esmalte mate"
