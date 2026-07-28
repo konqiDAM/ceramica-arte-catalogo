@@ -1,6 +1,6 @@
 ---
 titulo: "Vasija Lila"
-categoria: "Escultura"
+categoria: "Trabajos en torno"
 descripcion: "Vasija escultórica con engobe en tono lila, entre lo funcional y lo puramente estético."
 imagen: "/images/menu/pieza-9.jpg"
 materiales: "Gres, engobe lila"
