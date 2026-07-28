@@ -1,6 +1,6 @@
 ﻿---
 titulo: "TÃ­tulo del objeto"
-categoria: "Arte"
+categoria: "Objetos cotidianos"
 descripcion: "DescripciÃ³n corta del objeto."
 imagen: "/images/galeria/galeria-99.jpg"
 materiales: ""

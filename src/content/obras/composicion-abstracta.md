@@ -1,6 +1,6 @@
 ---
 titulo: "Composición Abstracta"
-categoria: "Arte"
+categoria: "Trabajos modelados"
 descripcion: "Obra mural en técnica mixta sobre soporte cerámico, con capas de color y textura."
 imagen: "/images/menu/pieza-8.jpg"
 materiales: "Técnica mixta sobre cerámica"

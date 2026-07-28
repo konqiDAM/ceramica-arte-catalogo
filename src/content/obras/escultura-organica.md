@@ -1,6 +1,6 @@
 ---
 titulo: "Escultura Orgánica"
-categoria: "Escultura"
+categoria: "Trabajos en torno"
 descripcion: "Escultura de formas orgánicas en gres chamotado, una exploración del movimiento y el equilibrio."
 imagen: "/images/inicio/pieza-6.jpg"
 materiales: "Gres chamotado"
