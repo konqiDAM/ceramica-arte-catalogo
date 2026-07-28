@@ -2,7 +2,7 @@
 titulo: "Tinaja Arenisca"
 categoria: "Cerámica"
 descripcion: "Tinaja de gran formato con textura arenosa, inspirada en la alfarería mediterránea tradicional."
-imagen: "/images/pieza-3.jpg"
+imagen: "/images/menu/pieza-4.jpg"
 materiales: "Gres arenoso"
 dimensiones: "35 × 20 cm"
 anio: 2024
