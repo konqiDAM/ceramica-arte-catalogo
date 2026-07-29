@@ -2,7 +2,7 @@
 export const site = {
   name: "Art studio JLS",
   tagline: "Bienvenidos al Taller de ceramica artesanal",
-  description:"diseño y creacion de arte. Encontraras piezas unicas y piezas de uso cotidiano. Descubrelo.",
+  description:"Diseño y creacion de arte. Encontraras piezas unicas y piezas de uso cotidiano.",
   email: "artstudiojls@gmail.com",
   phone: "0041 76 348 84 54",
   location: "Limmattalstrasse 280, 8049 Zürich",
