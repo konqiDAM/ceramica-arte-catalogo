@@ -1,14 +1,12 @@
 ---
-titulo: "Composición Abstracta"
-categoria: "Trabajos modelados"
-descripcion: "Obra mural en técnica mixta sobre soporte cerámico, con capas de color y textura."
+titulo: "Tazas"
+categoria: "Objetos cotidianos"
+descripcion: "Tazas en sets de 2 o de 6 piezas.Se puede elegir forma, tamaño y color."
 imagen: "/images/menu/pieza-8.jpg"
-materiales: "Técnica mixta sobre cerámica"
-dimensiones: "45 × 45 cm"
-anio: 2024
+
 disponible: true
 destacada: false
 orden: 8
 ---
 
-Una pieza que dialoga entre la pintura y la cerámica. Las capas de color y textura invitan a una contemplación pausada.
+.
