@@ -1,6 +1,6 @@
 ---
 titulo: "La y Lu"
-categoria: "Modelado a mano"
+categoria: "trabajos modelados"
 descripcion: "Escultura de formas orgánicas en gres chamotado con esmalto clasico."
 imagen: "/images/inicio/pieza-6a.jpg"
 
