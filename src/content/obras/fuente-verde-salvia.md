@@ -1,14 +1,12 @@
 ---
-titulo: "Fuente Verde Salvia"
-categoria: "Objetos cotidianos"
-descripcion: "Fuente amplia para servir, con un delicado esmalte verde salvia y borde irregular hecho a mano."
+titulo: "Amanacer"
+categoria: "Trabajos modelados"
+descripcion: "Pieza de unos 10 x 8 cm sobre un pedestal de piedra y hierro."
 imagen: "/images/menu/pieza-7.jpg"
-materiales: "Gres, esmalte salvia"
-dimensiones: "Ø 34 × 6 cm"
-anio: 2025
+
 disponible: true
 destacada: false
 orden: 7
 ---
 
-Perfecta para servir ensaladas o como pieza decorativa, esta fuente combina funcionalidad y belleza con su borde irregular característico del trabajo manual.
+Trabajo manual que está actualmente a la venta.

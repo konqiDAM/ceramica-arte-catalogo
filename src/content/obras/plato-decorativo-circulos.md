@@ -1,14 +1,12 @@
 ---
-titulo: "Plato Decorativo Círculos"
+titulo: "Qualle"
 categoria: "Trabajos modelados"
-descripcion: "Plato mural decorativo con composición de círculos concéntricos pintados a mano con óxidos naturales."
+descripcion: "Escultura de forma orgánica, en gres blanco chamotado con esmalto clásico. De tamaño variable, entre unos 15 x 20 cm. sobre un pedestal de piedra o hierro."
 imagen: "/images/menu/pieza-4.jpg"
-materiales: "Cerámica, óxidos"
-dimensiones: "Ø 30 cm"
-anio: 2025
+
 disponible: true
 destacada: true
 orden: 4
 ---
 
-Una obra pensada para colgar en la pared. Los círculos concéntricos, pintados a mano con óxidos naturales, crean un juego de profundidad y textura.
+De esta pieza hay infinidad de variaciones y también están disponibles en agrupaciones. Consulta para ver variaciones en el taller o para recibir fotos..

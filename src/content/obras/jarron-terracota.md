@@ -1,16 +1,14 @@
 ---
-titulo: "Jarrón Terracota"
+titulo: "Cuenco Terracota"
 categoria: "Objetos cotidianos"
-descripcion: "Jarrón torneado a mano en barro rojo, con acabado mate en tonos tierra. Cada pieza conserva las marcas del torno, testimonio del proceso artesanal."
+descripcion: " Este cuenco está elaborado en barro blanco con gres chamotado.  Esmalto y cocido en Raku. Sacado del horno a rojo vivo y reducido en humo."
 imagen: "/images/inicio/pieza-1.jpg"
-materiales: "Barro rojo, esmalte mate"
-dimensiones: "28 × 15 cm"
-anio: 2025
+
 disponible: true
 destacada: true
 orden: 1
 ---
 
-Torneado a mano en nuestro taller y cocido a alta temperatura, este jarrón combina la calidez del barro rojo con un esmalte mate que resalta sus curvas. Ideal como pieza central o para flores secas.
+Torneado a mano en nuestro taller y cocido en tecnica Raku.Ideal como pieza central.
 
-Al ser una pieza hecha a mano, pueden existir pequeñas variaciones que la hacen única.
+Consulta que variaciones están actualmente en venta.

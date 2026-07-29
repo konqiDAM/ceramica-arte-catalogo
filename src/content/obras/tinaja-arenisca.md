@@ -1,14 +1,12 @@
 ---
-titulo: "Tinaja Arenisca"
+titulo: "Fuente"
 categoria: "Objetos cotidianos"
-descripcion: "Tinaja de gran formato con textura arenosa, inspirada en la alfarería mediterránea tradicional."
-imagen: "/images/menu/pieza-4.jpg"
-materiales: "Gres arenoso"
-dimensiones: "35 × 20 cm"
-anio: 2024
+descripcion: "Fuente en distintos formatos y colores. Ideal para servir sushi o como centro de mesa."
+imagen: "/images/menu/pieza-4a.jpg"
+
 disponible: true
 destacada: false
 orden: 3
 ---
 
-Inspirada en las tinajas mediterráneas, esta pieza de gran formato aporta carácter a cualquier rincón. Su textura arenosa invita al tacto.
+Consulta para ver variaciones en el taller o para recibir fotos.
