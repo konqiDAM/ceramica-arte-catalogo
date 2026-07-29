@@ -1,14 +1,12 @@
 ---
-titulo: "Vasija Lila"
-categoria: "Trabajos en torno"
-descripcion: "Vasija escultórica con engobe en tono lila, entre lo funcional y lo puramente estético."
+titulo: "Acto"
+categoria: "Trabajos modelados"
+descripcion: " Acto femenio puramente estético."
 imagen: "/images/menu/pieza-9.jpg"
-materiales: "Gres, engobe lila"
-dimensiones: "30 × 18 cm"
-anio: 2025
+
 disponible: true
 destacada: false
 orden: 9
 ---
 
-Una vasija que difumina la frontera entre objeto útil y escultura. Su engobe lila, poco habitual en la cerámica tradicional, la convierte en una pieza singular.
+Intento de capturar la fragilidad y la fuerza del ser humano. Cada acto es único. En la actualidad dispongo de 5 que están a la venta. Contacta para ver fotos o verlos en el taller.

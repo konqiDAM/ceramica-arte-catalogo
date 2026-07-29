@@ -1,14 +1,13 @@
 ---
-titulo: "Taza Artesanal"
+titulo: "Jarrones"
 categoria: "Objetos cotidianos"
-descripcion: "Taza de porcelana con asa modelada a mano y esmalte brillante. El placer del café de cada mañana."
+descripcion: "Segun el barro y el tipo de esmaltado que se elija, los jarrones serán aptos para flores secas o naturales."
 imagen: "/images/menu/pieza-5.jpg"
-materiales: "Porcelana, esmalte brillante"
-dimensiones: "9 × 8 cm · 300 ml"
-anio: 2025
+
 disponible: true
 destacada: false
 orden: 5
 ---
 
-Ligera pero resistente, esta taza de porcelana se adapta perfectamente a la mano gracias a su asa modelada individualmente. Cada taza es ligeramente distinta.
+Torneado a mano. Están disponibles en muchos tamaños y en distintos esmaltados. Son piezas que se mueven entre lo funcional y lo puramente estético.
+Consulta qué variaciones están actualmente en venta.

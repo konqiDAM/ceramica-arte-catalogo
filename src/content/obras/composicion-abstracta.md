@@ -9,4 +9,4 @@ destacada: false
 orden: 8
 ---
 
-.
+Las tazas pueden ser con o sin asa. Cada taza es ligeramente distinta. Segun el barro y el tipo de esmaltado que se elija, las tazas serán resistentes al lavavajillas o no.
