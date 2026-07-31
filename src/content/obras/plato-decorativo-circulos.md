@@ -9,4 +9,4 @@ destacada: true
 orden: 4
 ---
 
-De esta pieza hay infinidad de variaciones y también están disponibles en agrupaciones. Consulta para ver variaciones en el taller o para recibir fotos..
+De esta pieza hay infinidad de variaciones y también están disponibles en agrupaciones. Consulta para ver variaciones en el taller o para recibir fotos.
