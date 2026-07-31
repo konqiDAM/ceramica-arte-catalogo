@@ -2,7 +2,7 @@
 titulo: "Jarrones"
 categoria: "Objetos cotidianos"
 descripcion: "Segun el barro y el tipo de esmaltado que se elija, los jarrones serán aptos para flores secas o naturales."
-imagen: "/images/menu/pieza-5.jpg"
+imagen: "/images/menu/pieza-5a.jpg"
 
 disponible: true
 destacada: false
