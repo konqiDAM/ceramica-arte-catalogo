@@ -26,31 +26,35 @@ import { url } from "../lib/url";
 
   <section class="section">
     <div class="container narrow">
-      <img src={url("/images/cursos/2.jpg")} alt="Curso de cerámica" width="500" height="500" />
-      <h2>EVENTOS</h2>
-      <p>
-       Organizo eventos como encuentros de empresa, cumpleaños, 
-        despedidas de soltero/a y actividades familiares.
-        Los eventos son para un mínimo de 2 personas y un máximo de 8 personas.
-      
-      </p>
-      <p>
-     Los cursos y los eventos se realizan en mi estudio en {site.location}. 
-      Cada curso o evento incluye materiales y herramientas.
-      </p>
+      <div class="eventos-layout">
+        <img src={url("/images/cursos/2.jpg")} alt="Curso de cerámica" />
+        <div class="eventos-content">
+          <h2>EVENTOS</h2>
+          <p>
+           Organizo eventos como encuentros de empresa, cumpleaños, 
+            despedidas de soltero/a y actividades familiares.
+            Los eventos son para un mínimo de 2 personas y un máximo de 8 personas.
+          
+          </p>
+          <p>
+         Los cursos y los eventos se realizan en mi estudio en {site.location}. 
+          Cada curso o evento incluye materiales y herramientas.
+          </p>
 
-      <div class="values">
-        <div class="value">
-          <h3>Principiantes</h3>
-          <p>Aprende las bases: eleccion del material, posibles tecnicas, formas básicas.</p>
-        </div>
-        <div class="value">
-          <h3>Torno</h3>
-          <p>Domina el torno eléctrico: amasado, centrado, formas básicas y técnicas de acabado.</p>
-        </div>
-        <div class="value">
-          <h3>Modelado a mano</h3>
-          <p>Crea relieves y formas orgánicas utilizando técnicas de modelado manual.</p>
+          <div class="values">
+            <div class="value">
+              <h3>Principiantes</h3>
+              <p>Aprende las bases: eleccion del material, posibles tecnicas, formas básicas.</p>
+            </div>
+            <div class="value">
+              <h3>Torno</h3>
+              <p>Domina el torno eléctrico: amasado, centrado, formas básicas y técnicas de acabado.</p>
+            </div>
+            <div class="value">
+              <h3>Modelado a mano</h3>
+              <p>Crea relieves y formas orgánicas utilizando técnicas de modelado manual.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -85,6 +89,20 @@ import { url } from "../lib/url";
   }
   .cursos-hero img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4 / 3; object-fit: cover; }
   .narrow { max-width: 760px; }
+  .eventos-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .eventos-layout img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
   .values {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -120,5 +138,6 @@ import { url } from "../lib/url";
   .cta-wrapper { margin-top: 2rem; }
   @media (max-width: 760px) {
     .cursos-hero { grid-template-columns: 1fr; }
+    .eventos-layout { grid-template-columns: 1fr; }
   }
 </style>
