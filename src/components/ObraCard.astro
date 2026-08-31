@@ -47,6 +47,9 @@ const { slug, titulo, categoria, descripcion, imagen, disponible = true } = Astr
   .card-media img {
     width: 100%;
     height: auto;
+    max-height: 350px;
+    object-fit: contain;
+    margin: 0 auto;
     transition: transform 0.4s ease;
   }
   .card:hover .card-media img { transform: scale(1.05); }
