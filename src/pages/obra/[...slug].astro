@@ -26,7 +26,7 @@ const relacionadas = (await getCollection("obras"))
     <div class="container">
       <a href={url("/catalogo")} class="back">← Volver al catálogo</a>
       <div class="detail-grid">
-        <div class="detail-media">
+        <div class="detail-media" style={`--bg: url(${url(d.imagen)})`}>
           <img src={url(d.imagen)} alt={d.titulo} width="500" height="500" />
         </div>
         <div class="detail-info">
@@ -59,7 +59,7 @@ const relacionadas = (await getCollection("obras"))
             <h2>Otras piezas de {d.categoria}</h2>
             <div class="related-grid">
               {relacionadas.map((o) => (
-                <a href={url(`/obra/${o.id}`)} class="related-card">
+                <a href={url(`/obra/${o.id}`)} class="related-card" style={`--bg: url(${url(o.data.imagen)})`}>
                   <img src={url(o.data.imagen)} alt={o.data.titulo} width="500" height="500" />
                   <span>{o.data.titulo}</span>
                 </a>
@@ -82,11 +82,14 @@ const relacionadas = (await getCollection("obras"))
     align-items: start;
   }
   .detail-media img {
-    width: 100%;
+    max-width: 100%;
+    max-height: min(80vh, 720px);
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
     position: sticky;
     top: 96px;
   }
@@ -119,8 +122,9 @@ const relacionadas = (await getCollection("obras"))
     box-shadow: var(--shadow);
   }
   .related-card span { font-weight: 500; }
+  .related-card span { font-weight: 500; }
   @media (max-width: 780px) {
     .detail-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .detail-media img { position: static; }
+    .detail-media img { position: static; max-height: 60vh; }
   }
 </style>

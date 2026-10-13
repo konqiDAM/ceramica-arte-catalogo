@@ -20,14 +20,18 @@ import { url } from "../lib/url";
         
         </p>
       </div>
-      <img src={url("/images/cursos/1.jpg")} alt="Curso de cerámica" width="500" height="500" />
+      <div class="media-frame cursos-frame" style={`--bg: url(${url("/images/cursos/1.jpg")})`}>
+        <img src={url("/images/cursos/1.jpg")} alt="Curso de cerámica" width="500" height="500" />
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="eventos-layout">
-        <img src={url("/images/cursos/2.jpg")} alt="Curso de cerámica" />
+        <div class="media-frame eventos-frame" style={`--bg: url(${url("/images/cursos/2.jpg")})`}>
+          <img src={url("/images/cursos/2.jpg")} alt="Curso de cerámica" />
+        </div>
         <div class="eventos-content">
           <h2>EVENTOS</h2>
           <p>
@@ -87,7 +91,8 @@ import { url } from "../lib/url";
     gap: 2.5rem;
     align-items: center;
   }
-  .cursos-hero img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4 / 3; object-fit: cover; }
+  .cursos-frame { aspect-ratio: 4 / 3; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .cursos-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
   .narrow { max-width: 760px; }
   .eventos-layout {
     display: grid;
@@ -95,13 +100,18 @@ import { url } from "../lib/url";
     gap: 2rem;
     align-items: start;
   }
-  .eventos-layout img {
+  .eventos-frame {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     aspect-ratio: 4 / 3;
-    object-fit: cover;
+    overflow: hidden;
     width: 100%;
-    height: auto;
+  }
+  .eventos-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
   }
   .values {
     display: grid;

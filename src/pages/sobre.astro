@@ -23,7 +23,9 @@ import { url } from "../lib/url";
         Si una pieza conmueve el alma del espectador, entonces todo el esfuerzo habrá valido la pena. 
         </p>
       </div>
-      <img src={url("/images/artista-jls/1.jpg")} alt="Jenifer Lazcano Sindin" width="500" height="500" />
+      <div class="media-frame about-frame" style={`--bg: url(${url("/images/artista-jls/1.jpg")})`}>
+        <img src={url("/images/artista-jls/1.jpg")} alt="Jenifer Lazcano Sindin" width="500" height="500" />
+      </div>
     </div>
   </section>
 
@@ -65,7 +67,8 @@ import { url } from "../lib/url";
     gap: 2.5rem;
     align-items: center;
   }
-  .about-hero img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4 / 3; object-fit: cover; }
+  .about-frame { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .about-frame img { width: 100%; height: auto; max-height: 70vh; display: block; border-radius: inherit; }
   .narrow { max-width: 760px; }
   .values {
     display: grid;

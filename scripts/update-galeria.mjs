@@ -14,7 +14,7 @@ try {
   // Filtrar solo archivos de imagen y ordenarlos
   const images = files
     .filter(file => imageExtensions.includes(path.extname(file).toLowerCase()))
-    .sort()
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }))
     .map(file => `/images/galeria/${file}`);
   
   // Leer el archivo galeria.astro
