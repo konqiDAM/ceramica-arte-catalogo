@@ -1,5 +1,6 @@
 // Central place for the studio's details. Edit these to personalize the site.
 import type { Locale } from "../i18n/ui";
+import { defaultLocale, isLocale } from "../i18n/ui";
 import { url } from "../lib/url";
 
 export interface SiteInfo {
@@ -42,23 +43,28 @@ export const siteLocales: Record<Locale, SiteInfo> = {
     tagline: "Bienvenidos al Taller de ceramica artesanal",
     description: "Diseño y creación de arte. Encontrarás piezas únicas y piezas de uso cotidiano.",
   },
+  it: {
+    ...baseSite,
+    tagline: "Ceramica artigianale e opere d'arte",
+    description: "Progettazione e creazione artistica. Qui troverai pezzi unici e oggetti per la vita quotidiana.",
+  },
 };
 
 export function getSite(locale: Locale | string | undefined): SiteInfo {
-  const l = (locale === "de" || locale === "en" || locale === "es" ? locale : "de") as Locale;
-  return siteLocales[l];
+  return siteLocales[isLocale(locale) ? locale : defaultLocale];
 }
 
-export const site: SiteInfo = siteLocales.de;
+export const site: SiteInfo = siteLocales[defaultLocale];
 
 const navLabels: Record<Locale, string[]> = {
   de: ["Startseite", "Werke", "Kurse", "Auftragsarbeiten", "Künstlerin JLS", "Fotogalerie", "Kontakt"],
   en: ["Home", "Works", "Courses", "Commissions", "Artist JLS", "Photo gallery", "Contact"],
   es: ["Inicio", "Obras", "Cursos", "Encargos", "Artista JLS", "Galería de Fotos", "Contacto"],
+  it: ["Home", "Opere", "Corsi", "Commissioni", "Artista JLS", "Galleria fotografica", "Contatto"],
 };
 
 export function getNav(locale: Locale | string | undefined) {
-  const l = (locale === "de" || locale === "en" || locale === "es" ? locale : "de") as Locale;
+  const l = isLocale(locale) ? locale : defaultLocale;
   const labels = navLabels[l];
   const hrefs = ["/", "/catalogo", "/cursos", "/encargos", "/sobre", "/galeria", "/contacto"];
   return hrefs.map((href, i) => ({
@@ -67,4 +73,4 @@ export function getNav(locale: Locale | string | undefined) {
   }));
 }
 
-export const nav = getNav("de");
+export const nav = getNav(defaultLocale);

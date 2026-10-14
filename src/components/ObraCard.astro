@@ -1,7 +1,7 @@
 ---
 import { url, localeUrl } from "../lib/url";
-import { isLocale, t, categoryLabel } from "../i18n/ui";
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+import { categoryLabel, defaultLocale, isLocale, t } from "../i18n/ui";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 interface Props {
   slug: string;
   titulo: string;

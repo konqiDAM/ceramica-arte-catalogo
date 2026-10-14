@@ -1,8 +1,8 @@
 ---
 import { getSite, getNav } from "../data/site";
-import { isLocale, t } from "../i18n/ui";
+import { defaultLocale, isLocale, t } from "../i18n/ui";
 import { url, localeUrl } from "../lib/url";
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 const site = getSite(locale);
 const nav = getNav(locale);
 const year = new Date().getFullYear();
@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
       <p class="footer-brand">{site.name}</p>
       <p class="footer-tag">{site.tagline}</p>
     </div>
-    <nav aria-label="Pie de página">
+    <nav aria-label={t(locale, "footer.aria")}>
       <ul>
         {nav.map((item) => (<li><a href={localeUrl(item.href, locale)}>{item.label}</a></li>))}
       </ul>

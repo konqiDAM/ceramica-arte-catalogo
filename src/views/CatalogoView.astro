@@ -2,15 +2,15 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ObraCard from "../components/ObraCard.astro";
-import { isLocale, t, categoryLabel } from "../i18n/ui";
+import { categoryLabel, defaultLocale, isLocale, t } from "../i18n/ui";
 import { getSite } from "../data/site";
 import { url } from "../lib/url";
 
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 const site = getSite(locale);
 const all = await getCollection("obras");
 const obras = all
-  .filter((o) => (o.data.lang ?? "es") === locale)
+  .filter((o) => o.data.lang === locale)
   .sort((a, b) => a.data.orden - b.data.orden);
 const categorias = [t(locale, "catalog.filter.all"), ...new Set(obras.map((o) => o.data.categoria))];
 ---

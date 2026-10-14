@@ -1,17 +1,36 @@
-export type Locale = "de" | "en" | "es";
+import type { Category } from "../data/categories";
 
-export const locales: Locale[] = ["de", "en", "es"];
+/**
+ * Single source of truth for the languages the site supports.
+ *
+ * `astro.config.mjs`, the `[lang]` routes and the header switcher all read from
+ * here, so adding a language means touching this array, this file's dictionary
+ * block, and the per-locale blocks in `src/data/site.ts` — nothing else.
+ */
+export const locales = ["de", "en", "es", "it"] as const;
+
+export type Locale = (typeof locales)[number];
+
+/** Served at the site root, without a URL prefix. */
 export const defaultLocale: Locale = "de";
 
-export function isLocale(value: string | undefined): value is Locale {
-  return value === "de" || value === "en" || value === "es";
+/** Served under a `/<locale>/` URL prefix. */
+export const prefixedLocales: Locale[] = locales.filter((l) => l !== defaultLocale);
+
+/**
+ * Matches a leading locale segment on a pathname, so that `/it/cursos` and
+ * `/cursos` resolve to the same page when switching languages.
+ */
+export const localePrefixPattern = new RegExp(`^/(${prefixedLocales.join("|")})(?=/|$)`);
+
+export function isLocale(value: string | undefined | null): value is Locale {
+  return typeof value === "string" && (locales as readonly string[]).includes(value);
 }
 
 type Params = Record<string, string | number>;
 
 export function t(locale: Locale, key: string, params?: Params): string {
-  const dict = (dictionaries as any)[locale] ?? (dictionaries as any).de ?? {};
-  let text: string = dict[key] ?? (dictionaries as any).de?.[key] ?? key;
+  let text: string = dictionaries[locale]?.[key] ?? dictionaries[defaultLocale][key] ?? key;
   if (params) {
     for (const [name, value] of Object.entries(params)) {
       text = text.replaceAll(`{${name}}`, String(value));
@@ -277,6 +296,7 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     "header.nav.aria": "Principal",
     "header.menu.open": "Abrir menú",
     "header.menu.close": "Cerrar menú",
+    "footer.aria": "Pie de página",
     "footer.tag": "Cerámica artesanal y obras de arte hechas a mano",
     "footer.copyright": "Piezas únicas hechas a mano.",
     "home.eyebrow": "Hecho a mano · Piezas únicas",
@@ -398,24 +418,148 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     "contacto.where": "Dónde estamos",
     "contacto.map.title": "Mapa de {query}",
   },
+  it: {
+    "header.nav.aria": "Navigazione principale",
+    "header.menu.open": "Apri il menu",
+    "header.menu.close": "Chiudi il menu",
+    "footer.aria": "Piè di pagina",
+    "footer.tag": "Ceramica artigianale e opere d'arte fatte a mano",
+    "footer.copyright": "Pezzi unici fatti a mano.",
+    "home.eyebrow": "Fatto a mano · Pezzi unici",
+    "home.hero.lead": "Progettazione e creazione artistica. Qui troverai pezzi unici e oggetti per la vita quotidiana. Scopri il lavoro di JLS: ceramica d'uso e opere d'arte, ogni pezzo realizzato e smaltato a mano.",
+    "home.cta.view": "Vedi le opere",
+    "home.cta.about": "Conosci Jenifer Lazcano Sindin",
+    "home.img.alt1": "Pezzo di ceramica in evidenza",
+    "home.img.alt2": "Scultura in evidenza",
+    "home.featured.eyebrow": "Selezione",
+    "home.featured.title": "Pezzi in evidenza",
+    "home.featured.seeAll": "Vedi tutte le opere ->",
+    "home.categories.eyebrow": "Esplora",
+    "home.categories.title": "Per categoria",
+    "home.categories.lead": "Dai pezzi per la vita quotidiana alle opere puramente artistiche. Per ambienti interni ed esterni.",
+    "home.categories.pieceSingular": "pezzo",
+    "home.categories.piecePlural": "pezzi",
+    "home.cta.title": "Ti interessa un pezzo?",
+    "home.cta.lead": "Sono disponibili anche commissioni su misura. Scrivimi e parliamo della tua idea.",
+    "home.cta.button": "Contatto",
+    "catalog.title": "Opere",
+    "catalog.description": "La ceramica è la poesia della terra. Federico García Lorca",
+    "catalog.eyebrow": "Jenifer Lazcano Sindin",
+    "catalog.heading": "Opere",
+    "catalog.lead": "Per sapere quali pezzi sono disponibili, contattami e vieni a visitare il mio studio. Ogni pezzo esiste una sola volta.",
+    "catalog.quote": "La ceramica è la poesia della terra. Federico García Lorca",
+    "catalog.filter.all": "Tutti",
+    "catalog.empty": "Non ci sono ancora pezzi in questa categoria.",
+    "obra.card.sold": "Venduto",
+    "obra.card.view": "Vedi il pezzo ->",
+    "obra.detail.back": "<- Torna al catalogo",
+    "obra.detail.materials": "Materiali",
+    "obra.detail.dimensions": "Dimensioni",
+    "obra.detail.year": "Anno",
+    "obra.detail.availability": "Disponibilità",
+    "obra.detail.available": "Disponibile",
+    "obra.detail.sold": "Venduto",
+    "obra.detail.consult": "Richiedi questo pezzo",
+    "obra.detail.contact": "Contatto",
+    "obra.detail.related": "Altri pezzi di {category}",
+    "obra.mailto.subject": "Richiesta: ",
+    "sobre.title": "Jenifer Lazcano Sindin",
+    "sobre.description": "Conosci Jenifer Lazcano Sindin e il processo artigianale dietro ogni pezzo.",
+    "sobre.eyebrow": "La nostra storia",
+    "sobre.lead": "Art studio JLS",
+    "sobre.p1": "Viaggiare è la mia grande ispirazione.",
+    "sobre.p2": "La ceramica fa parte della mia vita da oltre un decennio. Ho iniziato grazie alla mia mentore Jacqueline Ferronato. Le sono profondamente grata per tutto ciò che mi ha insegnato, in modo consapevole e inconsapevole.",
+    "sobre.p3": "Le tecniche di cottura a fiamma libera si possono controllare solo fino a un certo punto. Le perdite e le sorprese fanno parte del processo. Come nella vita, le aspettative sono raramente soddisfatte.",
+    "sobre.p4": "Se un pezzo tocca l'anima di chi lo guarda, tutto lo sforzo sarà valso la pena.",
+    "sobre.value1.title": "Fascinazione Raku",
+    "sobre.value1.text": "Sperimentare con tecniche diverse: Obvara, Pit Fire o Naked Raku, tra le altre.",
+    "sobre.value2.title": "Materiali nobili",
+    "sobre.value2.text": "Pigmenti e smalti di qualità, portati dai miei viaggi intorno al mondo.",
+    "sobre.value3.title": "Commissioni",
+    "sobre.value3.text": "Cerchi qualcosa di speciale? Progetto e realizzo pezzi su misura per te.",
+    "sobre.cta.title": "Visita o ordina il tuo pezzo",
+    "sobre.cta.lead": "{location}. Contattami per concordare un appuntamento o commissionare un pezzo.",
+    "sobre.cta.button": "Contatto",
+    "cursos.title": "Corsi ed eventi",
+    "cursos.description": "Impara la ceramica con noi. Corsi per principianti e per chi è già esperto.",
+    "cursos.eyebrow": "Impara con noi",
+    "cursos.heading": "CORSI",
+    "cursos.quote": "Se desideri staccarti dalla routine e sentirti nuovamente connesso a te stesso e alla terra, sarò felice di sostenerti. Il mio metodo consiste nell'osservare e sperimentare con le mani.",
+    "cursos.p1": "Se ti interessa il processo di esplorare la tua creatività più di un prodotto finale preciso, vieni a trovarmi in studio. I corsi sono individuali.",
+    "cursos.p2": "Per garantire un'assistenza personalizzata.",
+    "cursos.events.heading": "EVENTI",
+    "cursos.events.p1": "Organizzo eventi come incontri aziendali, compleanni, addii al singolo e alla singola e attività in famiglia.",
+    "cursos.events.p2": "Gli eventi sono per un minimo di 2 e un massimo di 8 persone.",
+    "cursos.events.p3": "I corsi e gli eventi si svolgono nel mio studio in {location}.",
+    "cursos.events.p4": "Ogni corso o evento include materiali e attrezzi.",
+    "cursos.value1.title": "Principianti",
+    "cursos.value1.text": "Impara le basi: scelta del materiale, tecniche possibili, forme semplici.",
+    "cursos.value2.title": "Tornio",
+    "cursos.value2.text": "Padrona del tornio elettrico: impastare, centrare, forme base e tecniche di rifinitura.",
+    "cursos.value3.title": "Modellazione a mano",
+    "cursos.value3.text": "Crea bassorilievi e forme organiche utilizzando tecniche di modellazione manuale.",
+    "cursos.contact.title": "Informazioni di contatto",
+    "cursos.contact.lead": "Ti interessa un corso? Contattami per verificare disponibilità, orari e prezzi.",
+    "cursos.contact.email": "E-mail",
+    "cursos.contact.phone": "Telefono",
+    "cursos.contact.telegram": "Telegram",
+    "cursos.contact.send": "Invia un messaggio",
+    "cursos.contact.button": "Contatta per prenotare",
+    "encargos.title": "Commissioni",
+    "encargos.description": "Commissiona pezzi di ceramica personalizzati. Creiamo opere uniche sulla base delle tue idee.",
+    "encargos.eyebrow": "Pezzi unici per te",
+    "encargos.heading": "Commissioni su misura",
+    "encargos.lead": "Hai in mente un'idea particolare? Lavoro con te per creare pezzi di ceramica unici, adatti alla tua visione, al tuo spazio e al tuo stile.",
+    "encargos.how.title": "Come funziona",
+    "encargos.how.p1": "Il processo di commissione inizia con un consulto. Mi racconti la tua idea: hai un progetto per la tua attività, per la tua casa o vuoi fare un regalo molto speciale? Ti aiuto a progettare pezzi unici; la ceramica è un materiale così versatile che le sue possibilità sono quasi infinite.",
+    "encargos.how.p2": "Ti fornisco un preventivo e un tempo di consegna. Una volta confermato e versato un acconto del dieci per cento del prezzo concordato, inizierò a lavorare il tuo pezzo. Ti terrò aggiornato con foto durante il processo creativo.",
+    "encargos.how.button": "Richiedi una commissione",
+    "encargos.img.alt": "Pezzo su misura",
+    "galeria.title": "Galleria fotografica",
+    "galeria.description": "Galleria fotografica di pezzi di ceramica e opere d'arte fatti a mano.",
+    "galeria.eyebrow": "Jenifer Lazcano Sindin",
+    "galeria.heading": "Galleria fotografica",
+    "galeria.lead": "Impressioni dal processo artigianale.",
+    "galeria.img.alt": "Fotografia {n} dello studio",
+    "contacto.title": "Contatto",
+    "contacto.description": "Contattami per acquistare pezzi o commissionare un'opera personalizzata.",
+    "contacto.eyebrow": "Parliamone",
+    "contacto.heading": "Contatto",
+    "contacto.lead": "Ti interessa un pezzo, vuoi commissionare qualcosa di speciale? Stai pensando di organizzare un evento o di iniziare con la ceramica? Scrivimi.",
+    "contacto.p": "La visita in studio è possibile su appuntamento.",
+    "contacto.info.heading": "Informazioni",
+    "contacto.label.email": "E-mail",
+    "contacto.label.phone": "Telefono",
+    "contacto.label.telegram": "Telegram",
+    "contacto.label.instagram": "Instagram",
+    "contacto.label.location": "Indirizzo",
+    "contacto.telegram.send": "Invia un messaggio",
+    "contacto.instagram.view": "Vedi il profilo",
+    "contacto.form.heading": "Inviaci un messaggio",
+    "contacto.form.name": "Nome",
+    "contacto.form.email": "E-mail",
+    "contacto.form.message": "Messaggio",
+    "contacto.form.submit": "Invia",
+    "contacto.form.note": "Si aprirà la tua app di posta. Puoi anche scriverci direttamente a {email}.",
+    "contacto.where": "Dove siamo",
+    "contacto.map.title": "Mappa di {query}",
+  },
 };
 
-// category labels helper kept below after dictionaries loaded
-export function categoryLabel(locale: Locale, category: string): string {
-  const map: Record<string, Record<Locale, string>> = {
-    "Cerámica": { de: "Keramik", en: "Ceramics", es: "Cerámica" },
-    "Arte": { de: "Kunst", en: "Art", es: "Arte" },
-    "Escultura": { de: "Skulptur", en: "Sculpture", es: "Escultura" },
-    "Cursos": { de: "Kurse", en: "Courses", es: "Cursos" },
-    "Eventos": { de: "Veranstaltungen", en: "Events", es: "Eventos" },
-    "Trabajos en torno": { de: "Drehscheibenarbeiten", en: "Wheel-thrown works", es: "Trabajos en torno" },
-    "Trabajos modelados": { de: "Modellierte Arbeiten", en: "Hand-modeled works", es: "Trabajos modelados" },
-    "Objetos cotidianos": { de: "Alltagsobjekte", en: "Everyday objects", es: "Objetos cotidianos" },
-    "Encargos": { de: "Auftragsarbeiten", en: "Commissions", es: "Auftragsarbeiten" },
+// Per-locale category labels. Typed against CATEGORIES so that adding or
+// removing a category becomes a compile-time error instead of a label that
+// silently falls back to the raw Spanish value.
+export function categoryLabel(locale: Locale, category: Category): string {
+  const map: Record<Category, Record<Locale, string>> = {
+    "Cerámica": { de: "Keramik", en: "Ceramics", es: "Cerámica", it: "Ceramica" },
+    "Arte": { de: "Kunst", en: "Art", es: "Arte", it: "Arte" },
+    "Escultura": { de: "Skulptur", en: "Sculpture", es: "Escultura", it: "Scultura" },
+    "Cursos": { de: "Kurse", en: "Courses", es: "Cursos", it: "Corsi" },
+    "Eventos": { de: "Veranstaltungen", en: "Events", es: "Eventos", it: "Eventi" },
+    "Trabajos en torno": { de: "Drehscheibenarbeiten", en: "Wheel-thrown works", es: "Trabajos en torno", it: "Lavori al tornio" },
+    "Trabajos modelados": { de: "Modellierte Arbeiten", en: "Hand-modeled works", es: "Trabajos modelados", it: "Lavori modellati a mano" },
+    "Objetos cotidianos": { de: "Alltagsobjekte", en: "Everyday objects", es: "Objetos cotidianos", it: "Oggetti quotidiani" },
+    "Encargos": { de: "Auftragsarbeiten", en: "Commissions", es: "Auftragsarbeiten", it: "Commissioni" },
   };
   return map[category]?.[locale] ?? category;
-}
-
-export function categoryKey(category: string): string {
-  return category;
 }

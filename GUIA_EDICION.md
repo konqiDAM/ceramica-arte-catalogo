@@ -47,9 +47,13 @@ ceramica-arte-catalogo/
 │   │   └── contacto.astro       # Página de contacto
 │   ├── content/
 │   │   └── obras/              # AQUÍ ESTÁN LAS PIEZAS DEL CATÁLOGO
-│   │       ├── jarron-terracota.md
-│   │       ├── cuenco-esmaltado-verde.md
-│   │       └── ... (un archivo por pieza)
+│   │       ├── es/            # Piezas en español
+│   │       │   ├── jarron-terracota.md
+│   │       │   ├── cuenco-esmaltado-verde.md
+│   │       │   └── ... (un archivo por pieza)
+│   │       ├── de/            # Las MISMAS piezas en alemán
+│   │       ├── en/            # Las MISMAS piezas en inglés
+│   │       └── it/            # Las MISMAS piezas en italiano
 │   └── styles/
 │       └── global.css          # COLORES Y ESTILOS GENERALES
 ├── public/                      # IMÁGENES Y ARCHIVOS PÚBLICOS
@@ -200,11 +204,17 @@ Las imágenes están organizadas en carpetas por página:
 
 ### PASO 2: Crear el archivo de la pieza
 
+> **MUY IMPORTANTE:** la web está en 4 idiomas (alemán, inglés, español e italiano).
+> Las piezas están separadas por idioma. El italiano es el que se usa por defecto
+> para las piezas nuevas: copia el archivo a la carpeta `it` **con el mismo nombre**
+> que ya tiene en español.
+
 1. Ve a: `C:\Users\jeni\CascadeProjects\ceramica-arte-catalogo\src\content\obras`
-2. Verás muchos archivos `.md` (uno por pieza)
-3. Copia uno de los archivos existentes (por ejemplo, `jarron-terracota.md`)
-4. Pega la copia en la misma carpeta
-5. Cambia el nombre del archivo copiado (ejemplo: `mi-nueva-pieza.md`)
+2. Entra en la carpeta `it`
+3. Copia un archivo existente de la carpeta `es` (por ejemplo, `jarron-terracota.md`)
+4. Pégalo en la carpeta `it` **sin cambiar el nombre**
+
+Si el nombre no coincide con el del español, la pieza no aparecerá en la web.
 
 ### PASO 3: Editar el archivo de la pieza
 
@@ -254,6 +264,8 @@ Texto largo con la descripción completa de la pieza.
   - `true` = aparece en la página de inicio
   - `false` = solo aparece en el catálogo
 - **orden**: Número para ordenar (1 aparece primero, 2 después, etc.)
+- **lang**: **NO LO CAMBIES.** Es `it` en la carpeta `it`, `es` en la carpeta `es`, etc.
+  Si te lo olvidas, la web no arranca y te avisa del error.
 
 **Después de los guiones `---`**, escribe la descripción larga de la pieza.
 
@@ -396,8 +408,8 @@ git push
 
 **Para añadir una pieza:**
 1. Pon foto en `public/images/`
-2. Copia un archivo `.md` en `src/content/obras/`
-3. Edita los datos de la pieza
+2. Copia un archivo `.md` de `src/content/obras/es/` a `src/content/obras/it/` **con el mismo nombre**
+3. Edita los datos de la pieza (no cambies `lang`)
 
 **Para ver cambios localmente:**
 - `npm run dev` y abre `http://localhost:4321`

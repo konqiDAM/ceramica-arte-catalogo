@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSite } from "../data/site";
-import { isLocale, t, categoryLabel } from "../i18n/ui";
+import { categoryLabel, defaultLocale, isLocale, t } from "../i18n/ui";
 import { url, localeUrl } from "../lib/url";
 import { getCollection, render } from "astro:content";
 
@@ -9,14 +9,14 @@ interface Props {
   obra: any;
 }
 const { obra } = Astro.props;
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 const site = getSite(locale);
 
 const { Content } = await render(obra);
 const d = obra.data;
 
 const all = await getCollection("obras");
-const localized = all.filter((o) => (o.data.lang ?? "es") === locale);
+const localized = all.filter((o) => o.data.lang === locale);
 const obraSlug = obra.id.split("/").pop() ?? obra.id;
 const relacionadas = localized
   .filter((o) => (o.id.split("/").pop() ?? o.id) !== obraSlug && o.data.categoria === d.categoria)

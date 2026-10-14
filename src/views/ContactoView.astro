@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSite } from "../data/site";
-import { isLocale, t } from "../i18n/ui";
+import { defaultLocale, isLocale, t } from "../i18n/ui";
 import { url } from "../lib/url";
 
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 const site = getSite(locale);
 
 const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&hl=${locale}&z=14&output=embed`;

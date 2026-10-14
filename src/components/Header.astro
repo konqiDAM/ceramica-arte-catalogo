@@ -1,9 +1,9 @@
 ---
 import { getSite, getNav } from "../data/site";
-import { isLocale, t } from "../i18n/ui";
+import { defaultLocale, isLocale, t } from "../i18n/ui";
 import { url, localeUrl } from "../lib/url";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 const site = getSite(locale);
 const nav = getNav(locale);
 const current = Astro.url.pathname.replace(/\/$/, "") || "/";

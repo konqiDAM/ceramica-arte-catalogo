@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { locales, defaultLocale } from './src/i18n/ui.ts';
 
 // https://astro.build/config
 // For GitHub Pages the site is served under /<repo>/. Set BASE_PATH in CI.
@@ -9,8 +10,8 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://konqidam.github.io',
   base,
   i18n: {
-    defaultLocale: 'de',
-    locales: ['de', 'en', 'es'],
+    defaultLocale,
+    locales: [...locales],
     routing: {
       prefixDefaultLocale: false,
     },

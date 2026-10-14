@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { isLocale, t } from "../i18n/ui";
+import { defaultLocale, isLocale, t } from "../i18n/ui";
 import { url } from "../lib/url";
 
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 
 const fotos = [
   "/images/galeria/1.jpg",

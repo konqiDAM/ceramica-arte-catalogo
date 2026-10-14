@@ -1,26 +1,23 @@
 ---
-import { isLocale } from "../i18n/ui";
+import { defaultLocale, isLocale, localePrefixPattern, locales } from "../i18n/ui";
 import { localeUrl } from "../lib/url";
 
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 // Remove BASE_PATH from pathname, then remove locale prefix, then clean leading slashes
-const rawPath = Astro.url.pathname.replace(new RegExp(`^${basePath.replace(/\//g, "\\/")}`, ""), "").replace(/^\/(en|es)(?=\/|$)/, "");
+const rawPath = Astro.url.pathname.replace(new RegExp(`^${basePath.replace(/\//g, "\\/")}`, ""), "").replace(localePrefixPattern, "");
 const cleanPath = rawPath.replace(/^\/+/, "");
-const langs = [
-  { code: "de", label: "DE" },
-  { code: "en", label: "EN" },
-  { code: "es", label: "ES" },
-];
 ---
+
 <nav aria-label="Language" class="lang-switch">
-  {langs.map((l) => (
+  {locales.map((code) => (
     <a
-      href={localeUrl(cleanPath || "/", l.code)}
-      class:list={[{ active: l.code === locale }]}
-      aria-current={l.code === locale ? "true" : undefined}
+      href={localeUrl(cleanPath || "/", code)}
+      class:list={[{ active: code === locale }]}
+      aria-current={code === locale ? "true" : undefined}
+      hreflang={code}
     >
-      {l.label}
+      {code.toUpperCase()}
     </a>
   ))}
 </nav>

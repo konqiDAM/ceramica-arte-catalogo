@@ -5,7 +5,7 @@ Handoff document for another Devin instance (or developer) continuing this proje
 ## What this is
 A **static catalog / portfolio website** for a ceramics & art studio. **No payments, no cart, no backend** — it only showcases pieces, offers courses, and has a contact form (`mailto`). Built with **Astro** (static output). Content is managed with Astro **content collections** in Markdown, so no database.
 
-Language of the site UI and content: **Spanish**.
+Languages of the site UI and content: **German (default), English, Spanish and Italian**.
 
 ## Live site & repo
 - Repo: https://github.com/konqiDAM/ceramica-arte-catalogo (branch `main`)
@@ -44,8 +44,10 @@ public/images/pieza-1..9.jpg     # piece images (placeholders; replace with real
 public/favicon.svg
 src/
   data/site.ts                   # studio name, email, phone, socials, nav, location, mapQuery — EDIT ME
+  data/categories.ts             # canonical catalog categories (data, not UI text)
+  i18n/ui.ts                     # locales, dictionaries, t(), categoryLabel() — ADD LANGUAGES HERE
   content.config.ts              # content collection "obras" schema (zod)
-  content/obras/*.md             # ONE markdown file per piece (the catalog data)
+  content/obras/<lang>/*.md      # ONE markdown file per piece, per language (de/en/es/it)
   lib/url.ts                     # base-path-aware URL helper (use everywhere)
   layouts/BaseLayout.astro       # <head>, fonts, Header + Footer wrapper
   components/Header.astro         # sticky nav + mobile hamburger (client script)
@@ -81,6 +83,23 @@ orden: 1                     # sort order (lower first)
 Texto largo (markdown) que se muestra en la página de detalle.
 ```
 Categories are an enum — adding a new category means updating the `z.enum([...])` in `src/content.config.ts`.
+
+## Internationalization (4 languages)
+- **Single source of truth:** `src/i18n/ui.ts` → `locales`. `astro.config.mjs`, the `[lang]` routes, `getStaticPaths()` and the header switcher all derive from it.
+- `defaultLocale` is `de` and is served **without** a prefix (`/catalogo`); `en`, `es` and `it` are served under `/<locale>/…` (`/en/catalogo`, `/it/catalogo`).
+- UI strings live in `dictionaries` inside `src/i18n/ui.ts`. All locales must define the **same keys** (124 as of Oct 2026) — a missing key silently falls back to German.
+- Per-locale studio tagline/description and the nav labels live in `src/data/site.ts`.
+- Category labels live in `categoryLabels` in `src/i18n/ui.ts`; the canonical category values are in `src/data/categories.ts`.
+- Pieces are one Markdown file per language: `src/content/obras/{de,en,es,it}/<slug>.md`. **The filename must match across languages** — the language switcher maps pages by slug, so `it/jarron-terracota` is only reachable from `es/jarron-terracota` if both files share a name.
+- Each file's `lang` frontmatter field selects which site it appears in, and it is **required** (no default) so a file that forgets it fails the build instead of vanishing from the catalogue.
+
+### To add a language
+1. Add the code to `locales` in `src/i18n/ui.ts`.
+2. Add a `dictionaries` block with **every** existing key.
+3. Add the entry to `categoryLabels` in the same file.
+4. Add `siteLocales.<code>` and `navLabels.<code>` in `src/data/site.ts`.
+5. Create `src/content/obras/<code>/` with one file per piece, keeping the existing filenames.
+Nothing else needs changing — routes, switcher and config follow automatically.
 
 ## Images
 - Images live in `public/images/` and are named `pieza-1.jpg` … `pieza-9.jpg` (JPG).

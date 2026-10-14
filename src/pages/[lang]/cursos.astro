@@ -1,10 +1,11 @@
 ---
-export function getStaticPaths() {
-  return [
-    { params: { lang: "en" } },
-    { params: { lang: "es" } },
-  ];
-}
+import { prefixedLocales } from "../../i18n/ui";
 import CursosView from "../../views/CursosView.astro";
+
+// One page per prefixed locale. The default locale (de) is served from the
+// unprefixed route at src/pages/cursos.astro.
+export function getStaticPaths() {
+  return prefixedLocales.map((lang) => ({ params: { lang } }));
+}
 ---
 <CursosView />

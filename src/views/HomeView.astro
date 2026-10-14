@@ -3,15 +3,15 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ObraCard from "../components/ObraCard.astro";
 import { getSite } from "../data/site";
-import { isLocale, t } from "../i18n/ui";
+import { defaultLocale, isLocale, t } from "../i18n/ui";
 import { url, localeUrl } from "../lib/url";
 import { categoryLabel } from "../i18n/ui";
 
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
 const site = getSite(locale);
 
 const obras = (await getCollection("obras"))
-  .filter((o) => (o.data.lang ?? "es") === locale)
+  .filter((o) => o.data.lang === locale)
   .sort((a, b) => a.data.orden - b.data.orden);
 const destacadas = obras.filter((o) => o.data.destacada).slice(0, 6);
 const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
