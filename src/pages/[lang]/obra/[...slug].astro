@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import ObraDetailView from "../../../views/ObraDetailView.astro";
+
+export async function getStaticPaths() {
+  const obras = await getCollection("obras");
+  const paths = [];
+  for (const lang of ["en", "es"]) {
+    const localized = obras.filter((o) => (o.data.lang ?? "es") === lang);
+    for (const obra of localized) {
+      paths.push({
+        params: { lang, slug: obra.id.split("/").pop() ?? obra.id },
+        props: { obra },
+      });
+    }
+  }
+  return paths;
+}
+---
+<ObraDetailView obra={Astro.props.obra} />

@@ -1,0 +1,95 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ObraCard from "../components/ObraCard.astro";
+import { isLocale, t, categoryLabel } from "../i18n/ui";
+import { getSite } from "../data/site";
+import { url } from "../lib/url";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const site = getSite(locale);
+const all = await getCollection("obras");
+const obras = all
+  .filter((o) => (o.data.lang ?? "es") === locale)
+  .sort((a, b) => a.data.orden - b.data.orden);
+const categorias = [t(locale, "catalog.filter.all"), ...new Set(obras.map((o) => o.data.categoria))];
+---
+<BaseLayout title={t(locale, "catalog.title")} description={t(locale, "catalog.description")}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t(locale, "catalog.eyebrow")}</p>
+      <h1>{t(locale, "catalog.heading")}</h1>
+      <p class="lead">{t(locale, "catalog.lead")}</p>
+      <p>{t(locale, "catalog.quote")}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters" role="tablist">
+        {
+          categorias.map((cat, index) => (
+            <button
+              class:list={["filter", { active: index === 0 }]}
+              data-cat={index === 0 ? "ALL" : cat}
+            >
+              {index === 0 ? cat : categoryLabel(locale, cat)}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="grid" id="obras-grid">
+        {
+          obras.map((o) => (
+            <div class="obra-item" data-cat={o.data.categoria} id={o.data.categoria.toLowerCase()}>
+              <ObraCard
+                slug={o.id.split("/").pop() ?? o.id}
+                titulo={o.data.titulo}
+                categoria={o.data.categoria}
+                descripcion={o.data.descripcion}
+                imagen={o.data.imagen}
+                disponible={o.data.disponible}
+              />
+            </div>
+          ))
+        }
+      </div>
+      <p class="empty" hidden>{t(locale, "catalog.empty")}</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .page-head .lead { margin-top: 0.5rem; }
+  .filters { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+  .filter { border: 1.5px solid var(--line); background: #fff; color: var(--ink); padding: 0.5rem 1.2rem; border-radius: 999px; font-weight: 500; font-size: 0.92rem; cursor: pointer; transition: 0.2s; }
+  .filter:hover { border-color: var(--clay); }
+  .filter.active { background: var(--clay); color: #fff; border-color: var(--clay); }
+  .empty { text-align: center; color: var(--muted); padding: 2rem 0; }
+</style>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>(".filter");
+  const items = document.querySelectorAll<HTMLElement>(".obra-item");
+  const empty = document.querySelector<HTMLElement>(".empty");
+
+  function apply(cat: string) {
+    let visible = 0;
+    items.forEach((item) => {
+      const show = cat === "ALL" || item.dataset.cat === cat;
+      item.hidden = !show;
+      if (show) visible++;
+    });
+    if (empty) empty.hidden = visible !== 0;
+  }
+
+  filters.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filters.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      apply(btn.dataset.cat || "ALL");
+    });
+  });
+</script>

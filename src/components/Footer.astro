@@ -1,6 +1,10 @@
 ---
-import { site, nav } from "../data/site";
+import { getSite, getNav } from "../data/site";
+import { isLocale, t } from "../i18n/ui";
 import { url } from "../lib/url";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const site = getSite(locale);
+const nav = getNav(locale);
 const year = new Date().getFullYear();
 ---
 
@@ -20,12 +24,12 @@ const year = new Date().getFullYear();
       <p>{site.location}</p>
       <p class="socials">
         <a href={site.instagram} target="_blank" rel="noopener">Instagram</a>
-        <a href={site.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+        <a href={site.telegram} target="_blank" rel="noopener">Telegram</a>
       </p>
     </div>
   </div>
   <div class="container copyright">
-    <p>© {year} {site.name}. Piezas únicas hechas a mano.</p>
+    <p>© {year} {site.name}. {t(locale, "footer.copyright")}</p>
   </div>
 </footer>
 

@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSite } from "../data/site";
+import { isLocale, t } from "../i18n/ui";
+import { url } from "../lib/url";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const site = getSite(locale);
+---
+<BaseLayout title={t(locale, "encargos.title")} description={t(locale, "encargos.description")}>
+  <section class="page-head">
+    <div class="container encargos-hero">
+      <div>
+        <p class="eyebrow">{t(locale, "encargos.eyebrow")}</p>
+        <h1>{t(locale, "encargos.heading")}</h1>
+        <p class="lead">{t(locale, "encargos.lead")}</p>
+        <div class="encargos-copy">
+          <h2>{t(locale, "encargos.how.title")}</h2>
+          <p>{t(locale, "encargos.how.p1")}</p>
+          <p>{t(locale, "encargos.how.p2")}</p>
+          <div class="cta-wrapper">
+            <a href={url("/contacto")} class="btn btn-primary">{t(locale, "encargos.how.button")}</a>
+          </div>
+        </div>
+      </div>
+      <div class="media-frame encargos-frame" style={`--bg: url(${url("/images/encargos/1.jpg")})`}>
+        <img src={url("/images/encargos/1.jpg")} alt={t(locale, "encargos.img.alt")} width="500" height="500" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .encargos-hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: start; }
+  .encargos-copy { margin-top: 1.5rem; }
+  .encargos-frame { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .encargos-frame img { width: 100%; height: auto; max-height: 70vh; display: block; border-radius: inherit; }
+  .narrow { max-width: 760px; }
+  .cta-wrapper { margin-top: 2.5rem; }
+  @media (max-width: 760px) { .encargos-hero { grid-template-columns: 1fr; } }
+</style>

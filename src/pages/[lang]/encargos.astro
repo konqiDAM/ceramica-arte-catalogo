@@ -1,0 +1,10 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+  ];
+}
+import EncargosView from "../../views/EncargosView.astro";
+---
+<EncargosView />

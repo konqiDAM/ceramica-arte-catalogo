@@ -1,18 +1,25 @@
 ---
-import { site, nav } from "../data/site";
+import { getSite, getNav } from "../data/site";
+import { isLocale, t } from "../i18n/ui";
 import { url } from "../lib/url";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const site = getSite(locale);
+const nav = getNav(locale);
 const current = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isActive = (href: string) => {
   const target = url(href).replace(/\/$/, "") || "/";
-  return href === "/" ? current === target : current.startsWith(target);
+  if (target === url("/").replace(/\/$/, "") || "/") return current === target;
+  return current === target || current.startsWith(target + "/");
 };
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href={url("/")} class="brand">{site.name}</a>
-    <nav aria-label="Principal">
-      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <a href={url(getRelativeLocaleUrl(locale, ""))} class="brand">{site.name}</a>
+    <nav aria-label={t(locale, "header.nav.aria")}>
+      <button class="menu-toggle" aria-label={t(locale, "header.menu.open")} aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
@@ -27,6 +34,7 @@ const isActive = (href: string) => {
         }
       </ul>
     </nav>
+    <LanguageSwitcher />
   </div>
 </header>
 

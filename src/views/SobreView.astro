@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSite } from "../data/site";
+import { isLocale, t } from "../i18n/ui";
+import { url } from "../lib/url";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const site = getSite(locale);
+---
+<BaseLayout title={t(locale, "sobre.title")} description={t(locale, "sobre.description")}>
+  <section class="page-head">
+    <div class="container about-hero">
+      <div>
+        <p class="eyebrow">{t(locale, "sobre.eyebrow")}</p>
+        <h1>Jenifer Lazcano Sindin</h1>
+        <p class="lead">{t(locale, "sobre.lead")}</p>
+        <p>{t(locale, "sobre.p1")}</p>
+        <p>{t(locale, "sobre.p2")}</p>
+        <p>{t(locale, "sobre.p3")}</p>
+        <p>{t(locale, "sobre.p4")}</p>
+      </div>
+      <div class="media-frame about-frame" style={`--bg: url(${url("/images/artista-jls/1.jpg")})`}>
+        <img src={url("/images/artista-jls/1.jpg")} alt="Jenifer Lazcano Sindin" width="500" height="500" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="values">
+        <div class="value">
+          <h3>{t(locale, "sobre.value1.title")}</h3>
+          <p>{t(locale, "sobre.value1.text")}</p>
+        </div>
+        <div class="value">
+          <h3>{t(locale, "sobre.value2.title")}</h3>
+          <p>{t(locale, "sobre.value2.text")}</p>
+        </div>
+        <div class="value">
+          <h3>{t(locale, "sobre.value3.title")}</h3>
+          <p>{t(locale, "sobre.value3.text")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container center">
+      <h2>{t(locale, "sobre.cta.title")}</h2>
+      <p class="lead mx-auto">{t(locale, "sobre.cta.lead", { location: site.location })}</p>
+      <a href={url("/contacto")} class="btn btn-primary">{t(locale, "sobre.cta.button")}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .about-hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; }
+  .about-frame { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .about-frame img { width: 100%; height: auto; max-height: 70vh; display: block; border-radius: inherit; }
+  .narrow { max-width: 760px; }
+  .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .value { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+  .value h3 { color: var(--clay-dark); }
+  .value p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  @media (max-width: 760px) { .about-hero { grid-template-columns: 1fr; } }
+</style>

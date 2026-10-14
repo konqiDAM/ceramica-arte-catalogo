@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSite } from "../data/site";
+import { isLocale, t } from "../i18n/ui";
+import { url } from "../lib/url";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const site = getSite(locale);
+---
+<BaseLayout title={t(locale, "cursos.title")} description={t(locale, "cursos.description")}>
+  <section class="page-head">
+    <div class="container cursos-hero">
+      <div>
+        <p class="eyebrow">{t(locale, "cursos.eyebrow")}</p>
+        <h1>{t(locale, "cursos.heading")}</h1>
+        <p class="lead">{t(locale, "cursos.quote")}</p>
+        <p>{t(locale, "cursos.p1")} {t(locale, "cursos.p2")}</p>
+      </div>
+      <div class="media-frame cursos-frame" style={`--bg: url(${url("/images/cursos/1.jpg")})`}>
+        <img src={url("/images/cursos/1.jpg")} alt={t(locale, "cursos.heading")} width="500" height="500" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eventos-layout">
+        <div class="media-frame eventos-frame" style={`--bg: url(${url("/images/cursos/2.jpg")})`}>
+          <img src={url("/images/cursos/2.jpg")} alt={t(locale, "cursos.heading")} />
+        </div>
+        <div class="eventos-content">
+          <h2>{t(locale, "cursos.events.heading")}</h2>
+          <p>{t(locale, "cursos.events.p1")}</p>
+          <p>{t(locale, "cursos.events.p2")}</p>
+          <p>{t(locale, "cursos.events.p3", { location: site.location })} {t(locale, "cursos.events.p4")}</p>
+
+          <div class="values">
+            <div class="value">
+              <h3>{t(locale, "cursos.value1.title")}</h3>
+              <p>{t(locale, "cursos.value1.text")}</p>
+            </div>
+            <div class="value">
+              <h3>{t(locale, "cursos.value2.title")}</h3>
+              <p>{t(locale, "cursos.value2.text")}</p>
+            </div>
+            <div class="value">
+              <h3>{t(locale, "cursos.value3.title")}</h3>
+              <p>{t(locale, "cursos.value3.text")}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container narrow">
+      <h2>{t(locale, "cursos.contact.title")}</h2>
+      <p class="lead">{t(locale, "cursos.contact.lead")}</p>
+      <ul class="contact-list">
+        <li><span>{t(locale, "cursos.contact.email")}</span><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><span>{t(locale, "cursos.contact.phone")}</span><a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a></li>
+        <li><span>{t(locale, "cursos.contact.telegram")}</span><a href={site.telegram} target="_blank" rel="noopener">{t(locale, "cursos.contact.send")}</a></li>
+      </ul>
+      <div class="cta-wrapper">
+        <a href={url("/contacto")} class="btn btn-primary">{t(locale, "cursos.contact.button")}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .cursos-hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; }
+  .cursos-frame { aspect-ratio: 4 / 3; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .cursos-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+  .narrow { max-width: 760px; }
+  .eventos-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start; }
+  .eventos-frame { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4 / 3; overflow: hidden; width: 100%; }
+  .eventos-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+  .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .value { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+  .value h3 { color: var(--clay-dark); }
+  .value p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .contact-list { list-style: none; padding: 0; margin: 2rem 0; }
+  .contact-list li { display: flex; flex-direction: column; padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
+  .contact-list span { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.15rem; }
+  .cta-wrapper { margin-top: 2rem; }
+  @media (max-width: 760px) { .cursos-hero { grid-template-columns: 1fr; } .eventos-layout { grid-template-columns: 1fr; } }
+</style>

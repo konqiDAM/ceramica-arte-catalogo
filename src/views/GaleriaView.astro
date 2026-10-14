@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { isLocale, t } from "../i18n/ui";
+import { url } from "../lib/url";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+
+const fotos = [
+  "/images/galeria/1.jpg",
+  "/images/galeria/2.jpg",
+  "/images/galeria/3.jpg",
+  "/images/galeria/4.jpg",
+  "/images/galeria/5.jpg",
+  "/images/galeria/6.jpg",
+  "/images/galeria/7.jpg",
+  "/images/galeria/8.jpg",
+  "/images/galeria/9.jpg",
+  "/images/galeria/10.jpg",
+  "/images/galeria/11.jpg",
+  "/images/galeria/12.jpg",
+  "/images/galeria/13.jpg",
+  "/images/galeria/14.jpg",
+  "/images/galeria/15.jpg",
+  "/images/galeria/16.jpg",
+  "/images/galeria/17.jpg",
+  "/images/galeria/18.jpg",
+  "/images/galeria/19.jpg",
+  "/images/galeria/20.jpg",
+  "/images/galeria/21.jpg",
+  "/images/galeria/22.jpg",
+  "/images/galeria/23.jpg",
+  "/images/galeria/24.jpg",
+  "/images/galeria/25.jpg",
+  "/images/galeria/26.jpg",
+  "/images/galeria/27.jpg",
+  "/images/galeria/28.jpg",
+  "/images/galeria/29.jpg",
+  "/images/galeria/30.jpg",
+  "/images/galeria/31.jpg",
+  "/images/galeria/32.jpg",
+  "/images/galeria/33.jpg",
+  "/images/galeria/34.jpg",
+  "/images/galeria/35.jpg",
+  "/images/galeria/36.jpg",
+  "/images/galeria/37.jpg",
+  "/images/galeria/38.jpg",
+  "/images/galeria/39.jpg",
+  "/images/galeria/40.jpg",
+  "/images/galeria/41.jpg",
+  "/images/galeria/42.jpg",
+  "/images/galeria/43.jpg",
+  "/images/galeria/44.jpg",
+  "/images/galeria/45.jpg",
+  "/images/galeria/46.jpg",
+  "/images/galeria/47.jpg",
+  "/images/galeria/48.jpg",
+  "/images/galeria/49.jpg",
+  "/images/galeria/50.jpg",
+  "/images/galeria/51.jpg",
+  "/images/galeria/52.jpg",
+  "/images/galeria/53.jpg",
+  "/images/galeria/54.jpg",
+  "/images/galeria/55.jpg",
+  "/images/galeria/56.jpg",
+  "/images/galeria/57.jpg",
+  "/images/galeria/58.jpg",
+  "/images/galeria/59.jpg",
+  "/images/galeria/60.jpg",
+  "/images/galeria/61.jpg",
+  "/images/galeria/62.jpg",
+  "/images/galeria/63.jpg",
+  "/images/galeria/64.jpg",
+  "/images/galeria/65.jpg",
+  "/images/galeria/66.jpg",
+  "/images/galeria/67.jpg",
+  "/images/galeria/68.jpg",
+  "/images/galeria/69.jpg",
+  "/images/galeria/70.jpg",
+  "/images/galeria/71.jpg",
+  "/images/galeria/72.jpg",
+  "/images/galeria/73.jpg",
+  "/images/galeria/74.jpg",
+  "/images/galeria/75.jpg",
+  "/images/galeria/76.jpg",
+  "/images/galeria/e2.jpg",
+];
+---
+<BaseLayout title={t(locale, "galeria.title")} description={t(locale, "galeria.description")}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t(locale, "galeria.eyebrow")}</p>
+      <h1>{t(locale, "galeria.heading")}</h1>
+      <p class="lead">{t(locale, "galeria.lead")}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="gallery">
+        {fotos.map((src, i) => (
+          <figure class="gallery-item" style={`--bg: url(${url(src)})`}>
+            <img src={url(src)} alt={t(locale, "galeria.img.alt", { n: i + 1 })} loading="lazy" width="600" height="600" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .page-head .lead { margin-top: 0.5rem; }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+  .gallery-item { margin: 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--sand); aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; position: relative; }
+  .gallery-item::before { content: ""; position: absolute; inset: -16px; background-image: var(--bg); background-size: cover; background-position: center; filter: blur(18px) saturate(1.15); transform: scale(1.15); z-index: 0; }
+  .gallery-item img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
+  .gallery-item:hover img { transform: scale(1.04); }
+</style>

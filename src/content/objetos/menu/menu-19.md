@@ -1,7 +1,7 @@
-﻿---
-titulo: "TÃ­tulo del objeto"
+---
+titulo: "Título del objeto"
 categoria: "Objetos cotidianos"
-descripcion: "DescripciÃ³n corta del objeto."
+descripcion: "Descripción corta del objeto."
 imagen: "/images/menu/menu-19.jpg"
 materiales: ""
 dimensiones: ""
@@ -11,4 +11,4 @@ destacada: false
 orden: 19
 ---
 
-DescripciÃ³n larga del objeto.
+Descripción larga del objeto.

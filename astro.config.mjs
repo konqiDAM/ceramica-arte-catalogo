@@ -8,4 +8,11 @@ const base = process.env.BASE_PATH || '/';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://konqidam.github.io',
   base,
+  i18n: {
+    defaultLocale: 'de',
+    locales: ['de', 'en', 'es'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

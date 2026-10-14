@@ -7,6 +7,7 @@ imagen: "/images/menu/pieza-4a.jpg"
 disponible: true
 destacada: false
 orden: 3
+lang: "es"
 ---
 
 Consulta para ver variaciones en el taller o para recibir fotos.

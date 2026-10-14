@@ -14,6 +14,7 @@ const obras = defineCollection({
     disponible: z.boolean().default(true),
     destacada: z.boolean().default(false),
     orden: z.number().default(0),
+    lang: z.enum(["de", "en", "es"]).default("es"),
   }),
 });
 
@@ -30,6 +31,7 @@ const objetos = defineCollection({
     disponible: z.boolean().default(true),
     destacada: z.boolean().default(false),
     orden: z.number().default(0),
+    lang: z.enum(["de", "en", "es"]).default("es"),
   }),
 });
 

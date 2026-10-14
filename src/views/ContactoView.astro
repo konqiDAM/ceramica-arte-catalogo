@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSite } from "../data/site";
+import { isLocale, t } from "../i18n/ui";
+import { url } from "../lib/url";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const site = getSite(locale);
+
+const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&hl=${locale}&z=14&output=embed`;
+---
+<BaseLayout title={t(locale, "contacto.title")} description={t(locale, "contacto.description")}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t(locale, "contacto.eyebrow")}</p>
+      <h1>{t(locale, "contacto.heading")}</h1>
+      <p class="lead">{t(locale, "contacto.lead")}</p>
+      <p>{t(locale, "contacto.p")}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <img src={url("/images/contacto/3.jpg")} alt="JLS trabajando en cerámica" />
+        <h2>{t(locale, "contacto.info.heading")}</h2>
+        <ul>
+          <li><span>{t(locale, "contacto.label.email")}</span><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><span>{t(locale, "contacto.label.phone")}</span><a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a></li>
+          <li><span>{t(locale, "contacto.label.telegram")}</span><a href={site.telegram} target="_blank" rel="noopener">{t(locale, "contacto.telegram.send")}</a></li>
+          <li><span>{t(locale, "contacto.label.instagram")}</span><a href={site.instagram} target="_blank" rel="noopener">{t(locale, "contacto.instagram.view")}</a></li>
+          <li><span>{t(locale, "contacto.label.location")}</span>{site.location}</li>
+        </ul>
+      </div>
+
+      <form class="contact-form" action={`mailto:${site.email}`} method="post" enctype="text/plain">
+        <h2>{t(locale, "contacto.form.heading")}</h2>
+        <div class="field">
+          <label for="nombre">{t(locale, "contacto.form.name")}</label>
+          <input id="nombre" name="nombre" type="text" required />
+        </div>
+        <div class="field">
+          <label for="email">{t(locale, "contacto.form.email")}</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="mensaje">{t(locale, "contacto.form.message")}</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">{t(locale, "contacto.form.submit")}</button>
+        <p class="form-note">{t(locale, "contacto.form.note", { email: site.email })}</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{t(locale, "contacto.where")}</h2>
+      <p class="lead">{site.location}</p>
+      <div class="map">
+        <iframe src={mapSrc} title={t(locale, "contacto.map.title", { query: site.mapQuery })} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(2.5rem, 6vw, 4rem) 0 0; }
+  .contact-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; }
+  .contact-image { width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+  .contact-info ul { list-style: none; padding: 0; margin: 0; }
+  .contact-info li { display: flex; flex-direction: column; padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
+  .contact-info span { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.15rem; }
+  .contact-form { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); }
+  .field { margin-bottom: 1.2rem; }
+  .field label { display: block; font-weight: 500; margin-bottom: 0.35rem; font-size: 0.92rem; }
+  .field input, .field textarea { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; background: var(--cream); color: var(--ink); }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--clay); background: #fff; }
+  .form-note { font-size: 0.85rem; color: var(--muted); margin-top: 1rem; }
+  .map { margin-top: 1.5rem; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
+  .map iframe { display: block; width: 100%; height: 420px; border: 0; }
+  @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+</style>

@@ -1,0 +1,10 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+  ];
+}
+import SobreView from "../../views/SobreView.astro";
+---
+<SobreView />

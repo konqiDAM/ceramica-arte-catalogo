@@ -2,7 +2,8 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { site } from "../data/site";
+import { getSite } from "../data/site";
+import { isLocale } from "../i18n/ui";
 import { url } from "../lib/url";
 
 interface Props {
@@ -10,13 +11,15 @@ interface Props {
   description?: string;
 }
 
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
+const site = getSite(locale);
 const { title, description } = Astro.props;
 const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.tagline}`;
 const pageDesc = description ?? site.description;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

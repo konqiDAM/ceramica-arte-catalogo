@@ -1,0 +1,10 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+  ];
+}
+import HomeView from "../../views/HomeView.astro";
+---
+<HomeView />
