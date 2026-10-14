@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ObraCard from "../components/ObraCard.astro";
 import { getSite } from "../data/site";
 import { isLocale, t } from "../i18n/ui";
-import { url } from "../lib/url";
+import { url, localeUrl } from "../lib/url";
 import { categoryLabel } from "../i18n/ui";
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
@@ -27,8 +27,8 @@ const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
         <h1>{site.tagline}</h1>
         <p class="lead">{t(locale, "home.hero.lead")}</p>
         <div class="hero-cta">
-          <a href={url("/catalogo")} class="btn btn-primary">{t(locale, "home.cta.view")}</a>
-          <a href={url("/sobre")} class="btn btn-ghost">{t(locale, "home.cta.about")}</a>
+          <a href={localeUrl("/catalogo", locale)} class="btn btn-primary">{t(locale, "home.cta.view")}</a>
+          <a href={localeUrl("/sobre", locale)} class="btn btn-ghost">{t(locale, "home.cta.about")}</a>
         </div>
       </div>
       <div class="hero-media">
@@ -49,7 +49,7 @@ const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
           <p class="eyebrow">{t(locale, "home.featured.eyebrow")}</p>
           <h2>{t(locale, "home.featured.title")}</h2>
         </div>
-        <a href={url("/catalogo")} class="see-all">{t(locale, "home.featured.seeAll")}</a>
+        <a href={localeUrl("/catalogo", locale)} class="see-all">{t(locale, "home.featured.seeAll")}</a>
       </div>
       <div class="grid">
         {
@@ -78,7 +78,7 @@ const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
       <div class="cat-grid">
         {
           Object.entries(totalPorCategoria).map(([cat, n]) => (
-            <a href={url(`/catalogo#${cat.toLowerCase()}`)} class="cat-card">
+            <a href={localeUrl(`/catalogo#${cat.toLowerCase()}`, locale)} class="cat-card">
               <h3>{categoryLabel(locale, cat)}</h3>
               <span>{n} {n === 1 ? t(locale, "home.categories.pieceSingular") : t(locale, "home.categories.piecePlural")}</span>
             </a>
@@ -92,7 +92,7 @@ const totalPorCategoria = obras.reduce<Record<string, number>>((acc, o) => {
     <div class="container center">
       <h2>{t(locale, "home.cta.title")}</h2>
       <p class="lead mx-auto">{t(locale, "home.cta.lead")}</p>
-      <a href={url("/contacto")} class="btn btn-primary">{t(locale, "home.cta.button")}</a>
+      <a href={localeUrl("/contacto", locale)} class="btn btn-primary">{t(locale, "home.cta.button")}</a>
     </div>
   </section>
 </BaseLayout>

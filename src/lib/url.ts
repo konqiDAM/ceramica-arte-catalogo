@@ -6,3 +6,12 @@ export function url(path: string): string {
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${base}${p}` || "/";
 }
+
+// Build a locale-aware URL respecting BASE_PATH
+export function localeUrl(path: string, locale: string): string {
+  const cleanPath = path.replace(/^\/+/, "");
+  if (locale === "de") {
+    return url(cleanPath ? `/${cleanPath}` : "/");
+  }
+  return url(cleanPath ? `/${locale}/${cleanPath}` : `/${locale}`);
+}

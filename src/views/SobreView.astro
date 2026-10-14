@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSite } from "../data/site";
 import { isLocale, t } from "../i18n/ui";
-import { url } from "../lib/url";
+import { url, localeUrl } from "../lib/url";
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
 const site = getSite(locale);
@@ -48,7 +48,7 @@ const site = getSite(locale);
     <div class="container center">
       <h2>{t(locale, "sobre.cta.title")}</h2>
       <p class="lead mx-auto">{t(locale, "sobre.cta.lead", { location: site.location })}</p>
-      <a href={url("/contacto")} class="btn btn-primary">{t(locale, "sobre.cta.button")}</a>
+      <a href={localeUrl("/contacto", locale)} class="btn btn-primary">{t(locale, "sobre.cta.button")}</a>
     </div>
   </section>
 </BaseLayout>

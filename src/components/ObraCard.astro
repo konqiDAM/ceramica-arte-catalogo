@@ -1,5 +1,5 @@
 ---
-import { url } from "../lib/url";
+import { url, localeUrl } from "../lib/url";
 import { isLocale, t, categoryLabel } from "../i18n/ui";
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 const { slug, titulo, categoria, descripcion, imagen, disponible = true } = Astro.props;
 ---
 
-<a class="card" href={url(`/obra/${slug}`)}>
+<a class="card" href={localeUrl(`/obra/${slug}`, locale)}>
   <div class="card-media" style={`--bg: url(${url(imagen)})`}>
     <img src={url(imagen)} alt={titulo} loading="lazy" width="500" height="500" />
     <span class="badge">{categoryLabel(locale, categoria)}</span>

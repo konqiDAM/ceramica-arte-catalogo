@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSite } from "../data/site";
 import { isLocale, t } from "../i18n/ui";
-import { url } from "../lib/url";
+import { url, localeUrl } from "../lib/url";
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
 const site = getSite(locale);
@@ -63,7 +63,7 @@ const site = getSite(locale);
         <li><span>{t(locale, "cursos.contact.telegram")}</span><a href={site.telegram} target="_blank" rel="noopener">{t(locale, "cursos.contact.send")}</a></li>
       </ul>
       <div class="cta-wrapper">
-        <a href={url("/contacto")} class="btn btn-primary">{t(locale, "cursos.contact.button")}</a>
+        <a href={localeUrl("/contacto", locale)} class="btn btn-primary">{t(locale, "cursos.contact.button")}</a>
       </div>
     </div>
   </section>

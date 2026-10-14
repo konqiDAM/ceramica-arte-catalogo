@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSite } from "../data/site";
 import { isLocale, t, categoryLabel } from "../i18n/ui";
-import { url } from "../lib/url";
+import { url, localeUrl } from "../lib/url";
 import { getCollection, render } from "astro:content";
 
 interface Props {
@@ -25,7 +25,7 @@ const relacionadas = localized
 <BaseLayout title={d.titulo} description={d.descripcion}>
   <section class="detail">
     <div class="container">
-      <a href={url("/catalogo")} class="back">{t(locale, "obra.detail.back")}</a>
+      <a href={localeUrl("/catalogo", locale)} class="back">{t(locale, "obra.detail.back")}</a>
       <div class="detail-grid">
         <div class="detail-media" style={`--bg: url(${url(d.imagen)})`}>
           <img src={url(d.imagen)} alt={d.titulo} width="500" height="500" />
@@ -49,7 +49,7 @@ const relacionadas = localized
             <a href={`mailto:${site.email}?subject=${encodeURIComponent(t(locale, "obra.mailto.subject") + d.titulo)}`} class="btn btn-primary">
               {t(locale, "obra.detail.consult")}
             </a>
-            <a href={url("/contacto")} class="btn btn-ghost">{t(locale, "obra.detail.contact")}</a>
+            <a href={localeUrl("/contacto", locale)} class="btn btn-ghost">{t(locale, "obra.detail.contact")}</a>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@ const relacionadas = localized
             <h2>{t(locale, "obra.detail.related", { category: categoryLabel(locale, d.categoria) })}</h2>
             <div class="related-grid">
               {relacionadas.map((o) => (
-                <a href={url(`/obra/${o.id.split("/").pop() ?? o.id}`)} class="related-card" style={`--bg: url(${url(o.data.imagen)})`}>
+                <a href={localeUrl(`/obra/${o.id.split("/").pop() ?? o.id}`, locale)} class="related-card" style={`--bg: url(${url(o.data.imagen)})`}>
                   <img src={url(o.data.imagen)} alt={o.data.titulo} width="500" height="500" />
                   <span>{o.data.titulo}</span>
                 </a>
