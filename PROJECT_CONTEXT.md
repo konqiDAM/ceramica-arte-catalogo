@@ -60,8 +60,11 @@ src/
     encargos.astro               # custom orders page
     sobre.astro                  # "Artista JLS" (about)
     galeria.astro                # photo gallery page
-    contacto.astro               # contact info + mailto form + Google Maps
+    contacto.astro               # contact info + Web3Forms form + Google Maps
+    gracias.astro                # thank-you page Web3Forms redirects to after a submission
     obra/[...slug].astro         # per-piece detail page (getStaticPaths)
+  views/                         # shared page components (one per page, used by both routes)
+  components/LanguageSwitcher.astro  # derives the locale list from src/i18n/ui.ts
 ```
 
 ## Content model — how to add / edit pieces
@@ -100,6 +103,9 @@ Categories are an enum — adding a new category means updating the `z.enum([...
 4. Add `siteLocales.<code>` and `navLabels.<code>` in `src/data/site.ts`.
 5. Create `src/content/obras/<code>/` with one file per piece, keeping the existing filenames.
 Nothing else needs changing — routes, switcher and config follow automatically.
+
+- The contact form POSTs to Web3Forms, which redirects the visitor to `/gracias` afterwards. `redirect` is an absolute, locale-aware URL built from `Astro.site` + `localeUrl("/gracias", locale)`, so remember `Astro.site` must be right or the thank-you page 404s. No JavaScript is involved — the confirmation is a normal static page, which is why it works even with JS disabled.
+- If the submit fails, the visitor still lands on `/gracias` (the redirect happens regardless), so the page is not proof that a message was delivered.
 
 ## Images
 - Images live in `public/images/` and are named `pieza-1.jpg` … `pieza-9.jpg` (JPG).

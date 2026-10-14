@@ -1,0 +1,11 @@
+---
+import { prefixedLocales } from "../../i18n/ui";
+import GraciasView from "../../views/GraciasView.astro";
+
+// Confirmation page, one per prefixed locale. The default locale (de) is
+// served from the unprefixed route at src/pages/gracias.astro.
+export function getStaticPaths() {
+  return prefixedLocales.map((lang) => ({ params: { lang } }));
+}
+---
+<GraciasView />

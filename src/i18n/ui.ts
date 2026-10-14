@@ -164,6 +164,11 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     "contacto.form.piece": "Anfrage zu:",
     "contacto.where": "Wo wir sind",
     "contacto.map.title": "Karte von {query}",
+    "gracias.title": "Nachricht gesendet",
+    "gracias.eyebrow": "Vielen Dank",
+    "gracias.heading": "Deine Nachricht ist angekommen",
+    "gracias.lead": "Ich habe sie erhalten und melde mich so bald wie möglich bei dir. Falls du nach ein paar Tagen nichts hörst, schau bitte auch im Spam-Ordner nach.",
+    "gracias.back": "Zurück zur Startseite",
   },
   en: {
     "header.nav.aria": "Main navigation",
@@ -289,6 +294,11 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     "contacto.form.piece": "Enquiry about:",
     "contacto.where": "Where we are",
     "contacto.map.title": "Map of {query}",
+    "gracias.title": "Message sent",
+    "gracias.eyebrow": "Thank you",
+    "gracias.heading": "Your message has arrived",
+    "gracias.lead": "I have received it and will get back to you as soon as possible. If you do not hear back within a few days, please check your spam folder as well.",
+    "gracias.back": "Back to home",
   },
   es: {
     "header.nav.aria": "Principal",
@@ -414,6 +424,11 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     "contacto.form.piece": "Consulta sobre:",
     "contacto.where": "Dónde estamos",
     "contacto.map.title": "Mapa de {query}",
+    "gracias.title": "Mensaje enviado",
+    "gracias.eyebrow": "Gracias",
+    "gracias.heading": "Tu mensaje ha llegado",
+    "gracias.lead": "Lo he recibido y te responderé lo antes posible. Si en unos días no tienes noticias, revisa también la carpeta de spam.",
+    "gracias.back": "Volver al inicio",
   },
   it: {
     "header.nav.aria": "Navigazione principale",
@@ -539,6 +554,11 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     "contacto.form.piece": "Richiesta per:",
     "contacto.where": "Dove siamo",
     "contacto.map.title": "Mappa di {query}",
+    "gracias.title": "Messaggio inviato",
+    "gracias.eyebrow": "Grazie",
+    "gracias.heading": "Il tuo messaggio è arrivato",
+    "gracias.lead": "L'ho ricevuto e ti risponderò il prima possibile. Se dopo qualche giorno non hai notizie, controlla anche la posta indesiderata.",
+    "gracias.back": "Torna alla home",
   },
 };
 

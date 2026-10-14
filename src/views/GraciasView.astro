@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { defaultLocale, isLocale, t } from "../i18n/ui";
+import { localeUrl } from "../lib/url";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
+---
+{/* Confirmation page for the contact form. Web3Forms redirects here after a
+    successful submission, so it needs no JavaScript at all — the static page
+    is pre-rendered and the server simply sends the visitor here. */}
+<BaseLayout title={t(locale, "gracias.title")} description={t(locale, "gracias.lead")}>
+  <section class="page-head">
+    <div class="container narrow">
+      <p class="eyebrow">{t(locale, "gracias.eyebrow")}</p>
+      <h1>{t(locale, "gracias.heading")}</h1>
+      <p class="lead">{t(locale, "gracias.lead")}</p>
+      <p class="cta">
+        <a href={localeUrl("/", locale)} class="btn btn-primary">{t(locale, "gracias.back")}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: clamp(3.5rem, 10vw, 7rem) 0; text-align: center; }
+  .page-head .lead { margin-inline: auto; }
+  .cta { margin-top: 2.5rem; }
+  .cta .btn { display: inline-block; }
+</style>

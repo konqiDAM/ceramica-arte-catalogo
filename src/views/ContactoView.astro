@@ -9,8 +9,10 @@ const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLoca
 const site = getSite(locale);
 
 const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&hl=${locale}&z=14&output=embed`;
-// Where Web3Forms sends the visitor after a successful submission.
-const redirectTo = new URL(url("/contacto"), Astro.site ?? "https://example.com").href;
+// Where Web3Forms sends the visitor after a successful submission. Absolute URL
+// because the service redirects from its own domain, and locale-aware so the
+// thank-you page comes back in the language the visitor was reading.
+const redirectTo = new URL(localeUrl("/gracias", locale), Astro.site ?? "https://example.com").href;
 ---
 <BaseLayout title={t(locale, "contacto.title")} description={t(locale, "contacto.description")}>
   <section class="page-head">
