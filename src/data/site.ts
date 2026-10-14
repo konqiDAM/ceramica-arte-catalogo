@@ -1,6 +1,5 @@
 // Central place for the studio's details. Edit these to personalize the site.
 import type { Locale } from "../i18n/ui";
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { url } from "../lib/url";
 
 export interface SiteInfo {
@@ -62,10 +61,16 @@ export function getNav(locale: Locale | string | undefined) {
   const l = (locale === "de" || locale === "en" || locale === "es" ? locale : "de") as Locale;
   const labels = navLabels[l];
   const hrefs = ["/", "/catalogo", "/cursos", "/encargos", "/sobre", "/galeria", "/contacto"];
-  return hrefs.map((href, i) => ({
-    href: getRelativeLocaleUrl(l, href.replace(/^\/+/, "")),
-    label: labels[i],
-  }));
+  return hrefs.map((href, i) => {
+    // Build locale-aware URL manually to respect BASE_PATH
+    const cleanHref = href.replace(/^\/+/, "");
+    const localePrefix = l === "de" ? "" : `/${l}`;
+    const fullHref = localePrefix ? `/${l}/${cleanHref}` : `/${cleanHref}`;
+    return {
+      href: fullHref,
+      label: labels[i],
+    };
+  });
 }
 
 export const nav = getNav("de");

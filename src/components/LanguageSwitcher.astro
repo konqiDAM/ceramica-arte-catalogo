@@ -1,5 +1,4 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { isLocale } from "../i18n/ui";
 import { url } from "../lib/url";
 
@@ -11,11 +10,20 @@ const langs = [
   { code: "en", label: "EN" },
   { code: "es", label: "ES" },
 ];
+
+// Build locale-aware URL manually to respect BASE_PATH
+function getLocaleUrl(langCode: string, path: string) {
+  const cleanPath = path.replace(/^\/+/, "");
+  if (langCode === "de") {
+    return cleanPath ? `/${cleanPath}` : "/";
+  }
+  return cleanPath ? `/${langCode}/${cleanPath}` : `/${langCode}`;
+}
 ---
 <nav aria-label="Language" class="lang-switch">
   {langs.map((l) => (
     <a
-      href={url(getRelativeLocaleUrl(l.code, cleanPath))}
+      href={url(getLocaleUrl(l.code, cleanPath))}
       class:list={[{ active: l.code === locale }]}
       aria-current={l.code === locale ? "true" : undefined}
     >
