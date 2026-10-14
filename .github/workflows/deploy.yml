@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Needed so this job can read secrets stored inside the `ceramica`
+    # environment. Without this line the Web3Forms key is silently ignored and
+    # the published site falls back to showing Telegram instead of the form.
+    environment: ceramica
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,10 +33,20 @@ jobs:
         run: npm ci
       - name: Update gallery images
         run: npm run update-galeria
+      - name: Check contact form secret
+        env:
+          KEY: ${{ secrets.WEB3FORMS_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::warning::WEB3FORMS_KEY is not set in the 'ceramica' environment. The contact form will NOT be rendered on the published site. Add it under Settings -> Environments -> ceramica -> Environment secrets."
+          else
+            echo "Web3Forms key found (ends in ...${KEY: -4}). The contact form will be rendered."
+          fi
       - name: Build
         env:
           BASE_PATH: /${{ github.event.repository.name }}
           SITE_URL: https://${{ github.repository_owner }}.github.io
+          PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

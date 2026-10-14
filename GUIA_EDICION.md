@@ -89,7 +89,6 @@ export const site = {
   name: "Art studio JLS",                    // ← NOMBRE DEL ESTUDIO
   tagline: "Cerámica artesanal...",         // ← FRASE CORTA
   description: "Piezas únicas...",           // ← DESCRIPCIÓN
-  email: "***ELIMINADO***",          // ← TU EMAIL
   phone: "0041 76 348 84 54",               // ← TU TELÉFONO
   location: "Limmattalstrasse 280...",      // ← TU DIRECCIÓN
   instagram: "https://instagram.com/",       // ← TU INSTAGRAM
@@ -101,6 +100,19 @@ export const site = {
 - Borra el texto entre comillas
 - Escribe el nuevo texto
 - **MANTÉN LAS COMILLAS** (son importantes)
+
+### Tu email NO está en este archivo (y es a propósito)
+
+Para que los bots y los buscadores no te robaren el email, **no está escrito en
+ningún archivo de la web**. Los mensajes del formulario de contacto llegan a tu
+correo a través de [Web3Forms](https://web3forms.com), que los reenvía por ti.
+
+Esto significa que:
+- **Nadie puede leer tu email mirando el código de la web.**
+- Tampoco aparece en el repositorio de GitHub.
+
+Si algún día tenés que cambiarlo, se hace **en la web de Web3Forms**
+(Access Keys → tu email de destino), no en estos archivos.
 
 ### PASO 3: Cambiar el menú de navegación
 

@@ -22,7 +22,7 @@ Load /catalogo.
 - FAIL if counts wrong or filtering doesn't change visible set.
 
 ## T4 — Piece detail (/obra/jarron-terracota)
-- PASS if: image renders, title "Jarrón Terracota", description, specs show Materiales / Dimensiones (28 × 15 cm) / Año (2025) / Disponibilidad (Disponible), "Consultar esta pieza" is a mailto link (mailto:***ELIMINADO***?subject=...), "Otras piezas de Cerámica" related section with clickable cards.
+- PASS if: image renders, title "Jarrón Terracota", description, specs show Materiales / Dimensiones (28 × 15 cm) / Año (2025) / Disponibilidad (Disponible), "Consultar esta pieza" links to the contact form pre-filled with the piece slug, "Otras piezas de Cerámica" related section with clickable cards.
 - Click a related card → navigates to another Cerámica piece detail.
 - FAIL if specs missing, mailto malformed, related links dead.
 

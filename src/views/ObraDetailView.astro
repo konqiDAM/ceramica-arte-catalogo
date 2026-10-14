@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getSite } from "../data/site";
 import { categoryLabel, defaultLocale, isLocale, t } from "../i18n/ui";
 import { url, localeUrl } from "../lib/url";
 import { getCollection, render } from "astro:content";
@@ -10,7 +9,6 @@ interface Props {
 }
 const { obra } = Astro.props;
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : defaultLocale;
-const site = getSite(locale);
 
 const { Content } = await render(obra);
 const d = obra.data;
@@ -46,7 +44,7 @@ const relacionadas = localized
           </dl>
 
           <div class="detail-cta">
-            <a href={`mailto:${site.email}?subject=${encodeURIComponent(t(locale, "obra.mailto.subject") + d.titulo)}`} class="btn btn-primary">
+            <a href={`${localeUrl("/contacto", locale)}?pieza=${encodeURIComponent(obraSlug)}`} class="btn btn-primary">
               {t(locale, "obra.detail.consult")}
             </a>
             <a href={localeUrl("/contacto", locale)} class="btn btn-ghost">{t(locale, "obra.detail.contact")}</a>

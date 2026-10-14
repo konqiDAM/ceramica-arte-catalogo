@@ -7,7 +7,6 @@ export interface SiteInfo {
   name: string;
   tagline: string;
   description: string;
-  email: string;
   phone: string;
   location: string;
   mapQuery: string;
@@ -18,7 +17,6 @@ export interface SiteInfo {
 
 const baseSite: Omit<SiteInfo, "tagline" | "description"> = {
   name: "Art studio JLS",
-  email: "***ELIMINADO***",
   phone: "0041 76 348 84 54",
   location: "Limmattalstrasse 280, 8049 Zürich",
   mapQuery: "Limmattalstrasse 280, 8049 Zürich",

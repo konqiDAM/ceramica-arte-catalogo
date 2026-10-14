@@ -118,7 +118,7 @@ Nothing else needs changing — routes, switcher and config follow automatically
 
 ## Current studio details (as of July 2026)
 - **Studio name**: Art studio JLS
-- **Email**: ***ELIMINADO***
+- **Contact form**: Web3Forms. The studio email is NOT stored in this repo — it is registered on the Web3Forms dashboard, which forwards submissions there. Configured via `PUBLIC_WEB3FORMS_KEY` (see `.env.example`; CI secret `WEB3FORMS_KEY`).
 - **Phone**: 0041 76 348 84 54
 - **Location**: Limmattalstrasse 280, 8049 Zürich
 - **Social**: Telegram (https://t.me/), Instagram (placeholder)

@@ -32,7 +32,7 @@ Active button state updates on each click. Empty state stayed hidden throughout.
 | ![Arte filter](https://app.devin.ai/attachments/205b060f-54f8-46e3-93db-2da4f3b8bbbc/ss_16746bb5.png) | ![Escultura filter](https://app.devin.ai/attachments/e7698735-e70c-4010-9fa8-ca261de429ef/ss_d58511cc.png) |
 
 ## T4 — Piece detail (/obra/jarron-terracota) — PASS
-Image, title, description render. Specs correct: Materiales (Barro rojo, esmalte mate), Dimensiones (28 × 15 cm), Año (2025), Disponibilidad (Disponible). "Consultar esta pieza" is a mailto link with `subject=Consulta%3A...` to ***ELIMINADO***. "Otras piezas de Cerámica" related section renders 3 pieces; clicking "Fuente Verde Salvia" navigated to its detail page correctly.
+Image, title, description render. Specs correct: Materiales (Barro rojo, esmalte mate), Dimensiones (28 × 15 cm), Año (2025), Disponibilidad (Disponible). "Consultar esta pieza" links to the contact page. "Otras piezas de Cerámica" related section renders 3 pieces; clicking "Fuente Verde Salvia" navigated to its detail page correctly.
 
 | Detail page | Related-link navigation works |
 |---|---|

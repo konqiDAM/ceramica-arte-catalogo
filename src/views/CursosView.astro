@@ -58,7 +58,6 @@ const site = getSite(locale);
       <h2>{t(locale, "cursos.contact.title")}</h2>
       <p class="lead">{t(locale, "cursos.contact.lead")}</p>
       <ul class="contact-list">
-        <li><span>{t(locale, "cursos.contact.email")}</span><a href={`mailto:${site.email}`}>{site.email}</a></li>
         <li><span>{t(locale, "cursos.contact.phone")}</span><a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a></li>
         <li><span>{t(locale, "cursos.contact.telegram")}</span><a href={site.telegram} target="_blank" rel="noopener">{t(locale, "cursos.contact.send")}</a></li>
       </ul>

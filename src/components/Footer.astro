@@ -20,7 +20,7 @@ const year = new Date().getFullYear();
       </ul>
     </nav>
     <div>
-      <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <p><a href={localeUrl("/contacto", locale)}>{t(locale, "contacto.title")}</a></p>
       <p>{site.location}</p>
       <p class="socials">
         <a href={site.instagram} target="_blank" rel="noopener">Instagram</a>
