@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 const galeriaDir = path.join(process.cwd(), 'public', 'images', 'galeria');
-const galeriaPagePath = path.join(process.cwd(), 'src', 'pages', 'galeria.astro');
+const galeriaPagePath = path.join(process.cwd(), 'src', 'views', 'GaleriaView.astro');
 
 // Extensiones de imagen soportadas
 const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif'];
