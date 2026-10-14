@@ -1,24 +1,22 @@
 ---
 import { getSite, getNav } from "../data/site";
 import { isLocale, t } from "../i18n/ui";
-import { url } from "../lib/url";
+import { url, localeUrl } from "../lib/url";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
 const site = getSite(locale);
 const nav = getNav(locale);
 const current = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isActive = (href: string) => {
-  const target = url(href).replace(/\/$/, "") || "/";
-  if (target === url("/").replace(/\/$/, "") || "/") return current === target;
+  const target = localeUrl(href, locale).replace(/\/$/, "") || "/";
+  if (target === localeUrl("/", locale).replace(/\/$/, "") || "/") return current === target;
   return current === target || current.startsWith(target + "/");
 };
-// Build home URL manually to respect BASE_PATH
-const homeUrl = locale === "de" ? "/" : `/${locale}`;
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href={url(homeUrl)} class="brand">{site.name}</a>
+    <a href={localeUrl("/", locale)} class="brand">{site.name}</a>
     <nav aria-label={t(locale, "header.nav.aria")}>
       <button class="menu-toggle" aria-label={t(locale, "header.menu.open")} aria-expanded="false">
         <span></span><span></span><span></span>
@@ -27,7 +25,7 @@ const homeUrl = locale === "de" ? "/" : `/${locale}`;
         {
           nav.map((item) => (
             <li>
-              <a href={url(item.href)} class:list={[{ active: isActive(item.href) }]}>
+              <a href={localeUrl(item.href, locale)} class:list={[{ active: isActive(item.href) }]}>
                 {item.label}
               </a>
             </li>

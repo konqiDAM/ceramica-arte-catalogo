@@ -1,7 +1,7 @@
 ---
 import { getSite, getNav } from "../data/site";
 import { isLocale, t } from "../i18n/ui";
-import { url } from "../lib/url";
+import { url, localeUrl } from "../lib/url";
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "de";
 const site = getSite(locale);
 const nav = getNav(locale);
@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
     </div>
     <nav aria-label="Pie de página">
       <ul>
-        {nav.map((item) => (<li><a href={url(item.href)}>{item.label}</a></li>))}
+        {nav.map((item) => (<li><a href={localeUrl(item.href, locale)}>{item.label}</a></li>))}
       </ul>
     </nav>
     <div>
