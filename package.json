@@ -13,9 +13,9 @@
     "update-galeria": "node scripts/update-galeria.mjs"
   },
   "dependencies": {
-    "astro": "^7.1.1"
+    "astro": "^7.4.1"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1"
+    "@types/node": "^26.6.6"
   }
 }
